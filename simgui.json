@@ -1,0 +1,20 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/LiveWindow/BallIndexer/BottomSensor": "Digital Input",
+      "/LiveWindow/BallIndexer/IndexVictor": "Motor Controller",
+      "/LiveWindow/BallIndexer/TopSensor": "Digital Input",
+      "/LiveWindow/BallIngest/IngestVictor": "Motor Controller",
+      "/LiveWindow/BallShooter/ShooterSparkMAX": "Motor Controller",
+      "/LiveWindow/Lift/LiftVictor": "Motor Controller",
+      "/LiveWindow/MechanumDrive/Drivetrain": "MecanumDrive",
+      "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Winch/WinchVictor": "Motor Controller",
+      "/SmartDashboard/Auto Mode": "String Chooser",
+      "/SmartDashboard/Autonomous": "Command",
+      "/SmartDashboard/BallShoot": "Command",
+      "/SmartDashboard/Shoot": "Command"
+    }
+  }
+}
