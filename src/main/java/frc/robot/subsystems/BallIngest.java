@@ -10,16 +10,18 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Constants;
 import frc.robot.commands.*;
+import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class BallIngest extends SubsystemBase {
-    private PWMVictorSPX ingestVictor;
+    private VictorSPX ingestVictor;
 
     public BallIngest() {
-        ingestVictor = new PWMVictorSPX(1);
-        addChild("IngestVictor", ingestVictor);
+        ingestVictor = new VictorSPX(Constants.ShooterConstants.kIntakeMotorCanID);
+        addChild("IngestVictor", (Sendable) ingestVictor);
         ingestVictor.setInverted(false);
     }
 

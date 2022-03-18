@@ -25,14 +25,31 @@ package frc.robot;
  */
 public class Constants {
 
-    // ==== MOTOR CONTROLLERS ====
+    // ==== DRIVE MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
     // with the correct CAN ID on the bus.
     public static final class DriveConstants {
-        public static final int kLeftFrontMotorCanID = 0;
+        public static final int kLeftFrontMotorCanID = 10;
         public static final int kRightFrontMotorCanID = 1;
         public static final int kLeftRearMotorCanID = 2;
         public static final int kRightRearMotorCanID = 3;
+    }
+
+    // ==== SHOOTER MOTOR CONTROLLERS ====
+    // This is where you should put your motor controllers and have them associated
+    // with the correct CAN ID on the bus.
+    public static final class ShooterConstants {
+        public static final int kShooterMotorCanID = 4;
+        public static final int kIntakeMotorCanID = 7;
+        public static final int kClockMotorCanID = 8;
+    }
+
+    // ==== ELEVATOR MOTOR CONTROLLERS ====
+    // This is where you should put your motor controllers and have them associated
+    // with the correct CAN ID on the bus.
+    public static final class ElevatorConstants {
+        public static final int kWinchMotorCanID = 5;
+        public static final int kTiltMotorCanID = 6;
     }
 
     // ==== POWER LIMITS ====
