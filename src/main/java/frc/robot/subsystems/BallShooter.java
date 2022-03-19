@@ -12,7 +12,7 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
+import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -25,7 +25,7 @@ public class BallShooter extends SubsystemBase {
     private RelativeEncoder shooterEncoder;
 
     public BallShooter() {
-        shooterSparkMAX = new CANSparkMax(Constants.ShooterMotorConstants.kShooterMotorCanID, MotorType.kBrushed);
+        shooterSparkMAX = new CANSparkMax(ShooterMotorConstants.kShooterMotorCanID, MotorType.kBrushed);
         shooterSparkMAX.setInverted(false);
         shooterEncoder = shooterSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
     }
@@ -56,5 +56,9 @@ public class BallShooter extends SubsystemBase {
      */    
     public double getEncoderVeolocity() {
         return shooterEncoder.getVelocity();
+    }
+
+    public void shootBall() {
+        shooterSparkMAX.set(1);
     }
 }

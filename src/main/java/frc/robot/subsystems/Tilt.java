@@ -10,7 +10,7 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
+import frc.robot.Constants.ElevatorMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -18,7 +18,7 @@ public class Tilt extends SubsystemBase {
     private VictorSPX liftVictor;
 
     public Tilt() {
-        liftVictor = new VictorSPX(Constants.ElevatorMotorConstants.kWinchMotorCanID);
+        liftVictor = new VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
         liftVictor.setInverted(false);
     }
 

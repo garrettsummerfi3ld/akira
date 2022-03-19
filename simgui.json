@@ -2,20 +2,33 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/LiveWindow/BallClock": "Subsystem",
       "/LiveWindow/BallIndexer/BottomSensor": "Digital Input",
       "/LiveWindow/BallIndexer/IndexVictor": "Motor Controller",
       "/LiveWindow/BallIndexer/TopSensor": "Digital Input",
       "/LiveWindow/BallIngest/IngestVictor": "Motor Controller",
+      "/LiveWindow/BallIntake": "Subsystem",
+      "/LiveWindow/BallShooter": "Subsystem",
       "/LiveWindow/BallShooter/ShooterSparkMAX": "Motor Controller",
       "/LiveWindow/Lift/LiftVictor": "Motor Controller",
       "/LiveWindow/MechanumDrive/Drivetrain": "MecanumDrive",
+      "/LiveWindow/MechanumDriveTrain/Drivetrain": "MecanumDrive",
+      "/LiveWindow/Tilt": "Subsystem",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler",
+      "/LiveWindow/Winch": "Subsystem",
       "/LiveWindow/Winch/WinchVictor": "Motor Controller",
       "/SmartDashboard/Auto Mode": "String Chooser",
       "/SmartDashboard/Autonomous": "Command",
       "/SmartDashboard/BallIntake": "Subsystem",
       "/SmartDashboard/BallShoot": "Command",
       "/SmartDashboard/Shoot": "Command"
+    }
+  },
+  "NetworkTables": {
+    "SmartDashboard": {
+      "Auto Mode": {
+        "open": true
+      }
     }
   }
 }

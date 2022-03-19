@@ -17,11 +17,6 @@ import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.subsystems.*;
-
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a
@@ -41,30 +36,24 @@ public class RobotContainer {
     public final Tilt m_tilt = new Tilt();
     public final BallIntake m_ballIntake = new BallIntake();
     public final BallShooter m_ballShooter = new BallShooter();
-    public final BallClock m_ballIndexer = new BallClock();
+    public final BallClock m_ballIClock = new BallClock();
     public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
-
-    // Joysticks
-    private final XboxController xboxController = new XboxController(Constants.ControllerConstants.auxXboxController);
-    private final Joystick driveJoystick = new Joystick(Constants.ControllerConstants.driverJoystickPort);
 
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     private RobotContainer() {
-
-        SmartDashboard.putData("Autonomous", new Autonomous());
-        SmartDashboard.putData("BallShoot", new BallShoot());
-        SmartDashboard.putData("BallIntake", new BallIntake());
-        SmartDashboard.putData("BallClock", new BallClock());
-        SmartDashboard.putData("Tilt", new Tilt());
-        SmartDashboard.putData("Winch", new Winch());
-        SmartDashboard.putData("DriveTrain", new MechanumDriveTrain());
 
         configureButtonBindings();
 
         m_mechanumDrive.setDefaultCommand(new MechanumDrive(m_mechanumDrive));
 
         SmartDashboard.putData("Auto Mode", m_chooser);
+        SmartDashboard.putData("Drivetrain", m_mechanumDrive);
+        SmartDashboard.putData("Winch", m_winch);
+        SmartDashboard.putData("Tilt", m_tilt);
+        SmartDashboard.putData("Intake", m_ballIntake);
+        SmartDashboard.putData("Clock", m_ballIClock);
+        SmartDashboard.putData("Shooter", m_ballShooter);
     }
 
     public static RobotContainer getInstance() {
@@ -81,18 +70,6 @@ public class RobotContainer {
      */
     private void configureButtonBindings() {
         // Create some buttons
-        final JoystickButton shoot = new JoystickButton(xboxController, XboxController.Button.kA.value);
-        shoot.whenPressed(new BallShoot(), true);
-        SmartDashboard.putData("Shoot", new BallShoot());
-
-    }
-
-    public Joystick getDriveJoystick() {
-        return driveJoystick;
-    }
-
-    public XboxController getXboxController() {
-        return xboxController;
     }
 
     /**
@@ -104,5 +81,4 @@ public class RobotContainer {
         // The selected command will be run in autonomous
         return m_chooser.getSelected();
     }
-
 }

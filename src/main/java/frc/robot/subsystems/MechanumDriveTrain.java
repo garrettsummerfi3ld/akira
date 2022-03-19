@@ -10,7 +10,8 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
+import frc.robot.Constants.DriveMotorConstants;
+import frc.robot.Constants.PowerConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -34,19 +35,19 @@ public class MechanumDriveTrain extends SubsystemBase {
      * The main drivetrain class, this has all the motors and encoders that relate to the drivetrain
      */
     public MechanumDriveTrain() {
-        leftFrontSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
+        leftFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
         leftFrontSparkMAX.setInverted(false);
         leftFrontEncoder = leftFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
-        rightFrontSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
+        rightFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
         rightFrontSparkMAX.setInverted(false);
         rightFrontEncoder = rightFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
-        leftRearSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
+        leftRearSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
         leftRearSparkMAX.setInverted(false);
         leftRearEncoder = leftRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
-        rightRearSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
+        rightRearSparkMAX = new CANSparkMax(DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
         rightRearSparkMAX.setInverted(false);
         rightRearEncoder = rightRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
@@ -54,7 +55,7 @@ public class MechanumDriveTrain extends SubsystemBase {
         addChild("Drivetrain", drivetrain);
         drivetrain.setSafetyEnabled(true);
         drivetrain.setExpiration(0.1);
-        drivetrain.setMaxOutput(Constants.PowerConstants.drivePowerLimit);
+        drivetrain.setMaxOutput(PowerConstants.drivePowerLimit);
 
     }
 

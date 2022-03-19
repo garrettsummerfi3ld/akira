@@ -10,10 +10,10 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.Constants;
+import frc.robot.Constants.ShooterSensorConstants;
+import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AnalogInput;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -24,12 +24,12 @@ public class BallClock extends SubsystemBase {
     private VictorSPX clockVictor;
 
     public BallClock() {
-        clockVictor = new VictorSPX(Constants.ShooterMotorConstants.kClockMotorCanID);
-
-        bottomSensor = new AnalogInput(Constants.ShooterSensorConstants.kSensorBottom);
+        clockVictor = new VictorSPX(ShooterMotorConstants.kClockMotorCanID);
+        
+        bottomSensor = new AnalogInput(ShooterSensorConstants.kSensorBottom);
         addChild("BottomSensor", bottomSensor);
 
-        topSensor = new AnalogInput(Constants.ShooterSensorConstants.kSensorTop);
+        topSensor = new AnalogInput(ShooterSensorConstants.kSensorTop);
         addChild("TopSensor", topSensor);
     }
 
@@ -54,10 +54,10 @@ public class BallClock extends SubsystemBase {
      * Sets a ball into the clocking mechanism and preps it for shooting
      */
     public void setBall() {
-        if (bottomSensor.getValue() >= Constants.ShooterSensorConstants.kSensorLowerThreshold || topSensor.getValue() <= Constants.ShooterSensorConstants.kSensorUpperThreshold) {
+        if (bottomSensor.getValue() >= ShooterSensorConstants.kSensorLowerThreshold || topSensor.getValue() <= ShooterSensorConstants.kSensorUpperThreshold) {
             clockVictor.set(ControlMode.PercentOutput, 0.2);
         }
-        else if (bottomSensor.getValue() <= Constants.ShooterSensorConstants.kSensorUpperThreshold || topSensor.getValue() >= Constants.ShooterSensorConstants.kSensorLowerThreshold) {
+        else if (bottomSensor.getValue() <= ShooterSensorConstants.kSensorUpperThreshold || topSensor.getValue() >= ShooterSensorConstants.kSensorLowerThreshold) {
             clockVictor.set(ControlMode.PercentOutput, -0.2);
         }
         else {
