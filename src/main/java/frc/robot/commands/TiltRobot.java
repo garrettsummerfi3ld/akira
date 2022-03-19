@@ -5,28 +5,35 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Tilt;
 
 public class TiltRobot extends CommandBase {
-  /** Creates a new TiltRobot. */
-  public TiltRobot() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  }
+    private final Tilt m_tilt;
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    public TiltRobot(Tilt subsystem) {
+        m_tilt = subsystem;
+        addRequirements(m_tilt);
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

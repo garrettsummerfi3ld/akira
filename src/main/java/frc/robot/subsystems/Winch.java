@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorMotorConstants;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Winch extends SubsystemBase {
@@ -34,4 +35,11 @@ public class Winch extends SubsystemBase {
 
     }
 
+    public void winchUp() {
+        winchVictor.set(ControlMode.PercentOutput, 0.5);
+    }
+
+    public void winchDown() {
+        winchVictor.set(ControlMode.PercentOutput, -0.5);
+    }
 }

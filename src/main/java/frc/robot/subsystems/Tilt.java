@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants.ElevatorMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Tilt extends SubsystemBase {
@@ -28,5 +29,13 @@ public class Tilt extends SubsystemBase {
 
     @Override
     public void simulationPeriodic() {
+    }
+
+    public void tiltUp() {
+        liftVictor.set(ControlMode.PercentOutput, 0.5);
+    }
+
+    public void tiltDown() {
+        liftVictor.set(ControlMode.PercentOutput, -0.5);
     }
 }

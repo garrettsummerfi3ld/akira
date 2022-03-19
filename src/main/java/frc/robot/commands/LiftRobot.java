@@ -5,28 +5,34 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Winch;
 
 public class LiftRobot extends CommandBase {
-  /** Creates a new LiftRobot. */
-  public LiftRobot() {
-    // Use addRequirements() here to declare subsystem dependencies.
-  }
+    private final Winch m_winch;
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    public LiftRobot(Winch subsystem) {
+        m_winch = subsystem;
+        addRequirements(m_winch);
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }
