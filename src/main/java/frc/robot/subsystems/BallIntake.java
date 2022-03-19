@@ -11,17 +11,15 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
-import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-public class BallIngest extends SubsystemBase {
-    private VictorSPX ingestVictor;
+public class BallIntake extends SubsystemBase {
+    private VictorSPX IntakeVictor;
 
-    public BallIngest() {
-        ingestVictor = new VictorSPX(Constants.ShooterMotorConstants.kIntakeMotorCanID);
-        addChild("IngestVictor", (Sendable) ingestVictor);
-        ingestVictor.setInverted(false);
+    public BallIntake() {
+        IntakeVictor = new VictorSPX(Constants.ShooterMotorConstants.kIntakeMotorCanID);
+        IntakeVictor.setInverted(false);
     }
 
     @Override

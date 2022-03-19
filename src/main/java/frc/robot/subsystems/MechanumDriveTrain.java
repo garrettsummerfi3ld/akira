@@ -12,11 +12,11 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.Encoder.IndexingType;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class MechanumDriveTrain extends SubsystemBase {
 
@@ -25,24 +25,30 @@ public class MechanumDriveTrain extends SubsystemBase {
     private final CANSparkMax leftRearSparkMAX;
     private final CANSparkMax rightRearSparkMAX;
     private final MecanumDrive drivetrain;
-    private Encoder leftFrontEncoder;
-    private Encoder rightFrontEncoder;
-    private Encoder leftRearEncoder;
-    private Encoder rightRearEncoder;
+    private RelativeEncoder leftFrontEncoder;
+    private RelativeEncoder rightFrontEncoder;
+    private RelativeEncoder leftRearEncoder;
+    private RelativeEncoder rightRearEncoder;
 
-
+    /**
+     * The main drivetrain class, this has all the motors and encoders that relate to the drivetrain
+     */
     public MechanumDriveTrain() {
         leftFrontSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
         leftFrontSparkMAX.setInverted(false);
+        leftFrontEncoder = leftFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
         rightFrontSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
         rightFrontSparkMAX.setInverted(false);
+        rightFrontEncoder = rightFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
         leftRearSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
         leftRearSparkMAX.setInverted(false);
+        leftRearEncoder = leftRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
         rightRearSparkMAX = new CANSparkMax(Constants.DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
         rightRearSparkMAX.setInverted(false);
+        rightRearEncoder = rightRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
 
         drivetrain = new MecanumDrive(leftFrontSparkMAX, rightFrontSparkMAX, leftRearSparkMAX, rightRearSparkMAX);
         addChild("Drivetrain", drivetrain);
@@ -50,25 +56,6 @@ public class MechanumDriveTrain extends SubsystemBase {
         drivetrain.setExpiration(0.1);
         drivetrain.setMaxOutput(Constants.PowerConstants.drivePowerLimit);
 
-        leftFrontEncoder = new Encoder(2, 3, false);
-        addChild("LeftFrontEncoder", leftFrontEncoder);
-        leftFrontEncoder.setDistancePerPulse(1.0);
-        leftFrontEncoder.setIndexSource(4, IndexingType.kResetOnRisingEdge);
-
-        rightFrontEncoder = new Encoder(5, 6, false);
-        addChild("RightFrontEncoder", rightFrontEncoder);
-        rightFrontEncoder.setDistancePerPulse(1.0);
-        rightFrontEncoder.setIndexSource(7, IndexingType.kResetOnRisingEdge);
-
-        leftRearEncoder = new Encoder(8, 9, false);
-        addChild("LeftRearEncoder", leftRearEncoder);
-        leftRearEncoder.setDistancePerPulse(1.0);
-        leftRearEncoder.setIndexSource(10, IndexingType.kResetOnRisingEdge);
-
-        rightRearEncoder = new Encoder(11, 12, false);
-        addChild("RightRearEncoder", rightRearEncoder);
-        rightRearEncoder.setDistancePerPulse(1.0);
-        rightRearEncoder.setIndexSource(13, IndexingType.kResetOnRisingEdge);
     }
 
     @Override
@@ -81,16 +68,44 @@ public class MechanumDriveTrain extends SubsystemBase {
 
     }
 
-    // Main drivetrain movement
+    /**
+     * Main drivetrain movement, this pipes all the joystick movement to the drivetrain and has it driving
+     * in a cartesian plane, with x, y, and z axises
+     * 
+     * @param xSpeed Input from the x-axis on the joystick
+     * @param ySpeed Input from the y-axis on the joystick
+     * @param zRotate Inpt from the rotate on the joystick
+     */
     public void drivetrain(double xSpeed, double ySpeed, double zRotate){
         drivetrain.driveCartesian(xSpeed, ySpeed, zRotate);
     }
 
-    public double[] getEncoderValues() {
-        double leftFrontEnc = leftFrontEncoder.getRate();
-        double rightFrontEnc = leftRearEncoder.getRate();
-        double leftRearEnc = rightFrontEncoder.getRate();
-        double rightRearEnc = rightRearEncoder.getRate();
+    /**
+     * Gets all the encoder positions from the drivetrain
+     * 
+     * @return double[] of all encoder values, will be returned in leftFront, rightFront, leftRear, rightRear and in units of revolutions
+     */
+    public double[] getEncoderPositions() {
+        double leftFrontEnc = leftFrontEncoder.getPosition();
+        double rightFrontEnc = leftRearEncoder.getPosition();
+        double leftRearEnc = rightFrontEncoder.getPosition();
+        double rightRearEnc = rightRearEncoder.getPosition();
+
+        double[] encVals = {leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc};
+
+        return encVals;
+    }
+
+    /**
+     * Gets all encoder velocities from the drivetrain.
+     * 
+     * @return double[] of all encoder values, will be returned in leftFront, rightFront, leftRear, rightRear and in units of RPM
+     */
+    public double[] getEncoderVeolocity(){
+        double leftFrontEnc = leftFrontEncoder.getVelocity();
+        double rightFrontEnc = leftRearEncoder.getVelocity();
+        double leftRearEnc = rightFrontEncoder.getVelocity();
+        double rightRearEnc = rightRearEncoder.getVelocity();
 
         double[] encVals = {leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc};
 

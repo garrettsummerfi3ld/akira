@@ -13,6 +13,7 @@
       "/LiveWindow/Winch/WinchVictor": "Motor Controller",
       "/SmartDashboard/Auto Mode": "String Chooser",
       "/SmartDashboard/Autonomous": "Command",
+      "/SmartDashboard/BallIntake": "Subsystem",
       "/SmartDashboard/BallShoot": "Command",
       "/SmartDashboard/Shoot": "Command"
     }

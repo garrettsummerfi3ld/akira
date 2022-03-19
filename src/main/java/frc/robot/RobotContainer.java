@@ -38,10 +38,10 @@ public class RobotContainer {
 
     // The robot's subsystems
     public final Winch m_winch = new Winch();
-    public final Tilt m_lift = new Tilt();
-    public final BallIngest m_ballIngest = new BallIngest();
+    public final Tilt m_tilt = new Tilt();
+    public final BallIntake m_ballIntake = new BallIntake();
     public final BallShooter m_ballShooter = new BallShooter();
-    public final BallIndexer m_ballIndexer = new BallIndexer();
+    public final BallClock m_ballIndexer = new BallClock();
     public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
 
     // Joysticks
@@ -54,6 +54,11 @@ public class RobotContainer {
 
         SmartDashboard.putData("Autonomous", new Autonomous());
         SmartDashboard.putData("BallShoot", new BallShoot());
+        SmartDashboard.putData("BallIntake", new BallIntake());
+        SmartDashboard.putData("BallClock", new BallClock());
+        SmartDashboard.putData("Tilt", new Tilt());
+        SmartDashboard.putData("Winch", new Winch());
+        SmartDashboard.putData("DriveTrain", new MechanumDriveTrain());
 
         configureButtonBindings();
 

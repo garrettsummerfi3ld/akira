@@ -14,23 +14,20 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.Encoder.IndexingType;
-import edu.wpi.first.wpilibj.Encoder;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxRelativeEncoder;
+
 public class BallShooter extends SubsystemBase {
 
     private CANSparkMax shooterSparkMAX;
-    private Encoder shooterEncoder;
+    private RelativeEncoder shooterEncoder;
 
     public BallShooter() {
         shooterSparkMAX = new CANSparkMax(Constants.ShooterMotorConstants.kShooterMotorCanID, MotorType.kBrushed);
         shooterSparkMAX.setInverted(false);
-
-        shooterEncoder = new Encoder(14, 15, false);
-        addChild("ShooterEncoder", shooterEncoder);
-        shooterEncoder.setDistancePerPulse(1.0);
-        shooterEncoder.setIndexSource(16, IndexingType.kResetOnRisingEdge);
+        shooterEncoder = shooterSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
     }
 
     @Override
@@ -41,5 +38,23 @@ public class BallShooter extends SubsystemBase {
     @Override
     public void simulationPeriodic() {
 
+    }
+
+    /**
+     * Gets encoder position from the shooter motor
+     * 
+     * @return double[] of the encoder in units of revolutions
+     */
+    public double getEncoderPosition() {
+        return shooterEncoder.getPosition();
+    }
+
+    /**
+     * Gets encoder velocity from the shooter motor
+     * 
+     * @return double of the encoder in units of RPM
+     */    
+    public double getEncoderVeolocity() {
+        return shooterEncoder.getVelocity();
     }
 }

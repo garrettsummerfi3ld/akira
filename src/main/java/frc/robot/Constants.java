@@ -67,6 +67,8 @@ public class Constants {
     public static final class ShooterSensorConstants{
         public static final int kSensorTop = 1;
         public static final int kSensorBottom = 0;
+        public static final int kSensorLowerThreshold = 3500;
+        public static final int kSensorUpperThreshold = 200;
     }
 
     // ==== CONTROLLER PORTS ====
