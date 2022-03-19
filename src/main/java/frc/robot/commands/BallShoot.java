@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.BallShooter;
 
 public class BallShoot extends CommandBase {
-
     public final BallShooter m_ballShooter;
 
     public BallShoot(BallShooter subsystem) {
