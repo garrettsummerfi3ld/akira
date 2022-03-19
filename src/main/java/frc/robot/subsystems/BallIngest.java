@@ -11,7 +11,6 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
-import frc.robot.commands.*;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
@@ -20,7 +19,7 @@ public class BallIngest extends SubsystemBase {
     private VictorSPX ingestVictor;
 
     public BallIngest() {
-        ingestVictor = new VictorSPX(Constants.ShooterConstants.kIntakeMotorCanID);
+        ingestVictor = new VictorSPX(Constants.ShooterMotorConstants.kIntakeMotorCanID);
         addChild("IngestVictor", (Sendable) ingestVictor);
         ingestVictor.setInverted(false);
     }

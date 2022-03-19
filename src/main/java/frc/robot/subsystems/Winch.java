@@ -10,17 +10,17 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.commands.*;
+import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Winch extends SubsystemBase {
 
-    private PWMVictorSPX winchVictor;
+    private VictorSPX winchVictor;
 
     public Winch() {
-        winchVictor = new PWMVictorSPX(8);
-        addChild("WinchVictor", winchVictor);
+        winchVictor = new VictorSPX(8);
+        addChild("WinchVictor", (Sendable) winchVictor);
         winchVictor.setInverted(false);
 
     }

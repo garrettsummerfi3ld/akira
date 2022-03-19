@@ -38,7 +38,7 @@ public class RobotContainer {
 
     // The robot's subsystems
     public final Winch m_winch = new Winch();
-    public final Lift m_lift = new Lift();
+    public final Tilt m_lift = new Tilt();
     public final BallIngest m_ballIngest = new BallIngest();
     public final BallShooter m_ballShooter = new BallShooter();
     public final BallIndexer m_ballIndexer = new BallIndexer();

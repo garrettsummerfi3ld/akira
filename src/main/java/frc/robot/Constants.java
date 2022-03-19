@@ -28,7 +28,7 @@ public class Constants {
     // ==== DRIVE MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
     // with the correct CAN ID on the bus.
-    public static final class DriveConstants {
+    public static final class DriveMotorConstants {
         public static final int kLeftFrontMotorCanID = 10;
         public static final int kRightFrontMotorCanID = 1;
         public static final int kLeftRearMotorCanID = 2;
@@ -37,8 +37,8 @@ public class Constants {
 
     // ==== SHOOTER MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
-    // with the correct CAN ID on the bus.
-    public static final class ShooterConstants {
+    // with the correct CAN ID on the bus for the SHOOTER, CLOCKING, and INTAKE systems.
+    public static final class ShooterMotorConstants {
         public static final int kShooterMotorCanID = 4;
         public static final int kIntakeMotorCanID = 7;
         public static final int kClockMotorCanID = 8;
@@ -46,8 +46,8 @@ public class Constants {
 
     // ==== ELEVATOR MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
-    // with the correct CAN ID on the bus.
-    public static final class ElevatorConstants {
+    // with the correct CAN ID on the bus for the ELEVATOR systems
+    public static final class ElevatorMotorConstants {
         public static final int kWinchMotorCanID = 5;
         public static final int kTiltMotorCanID = 6;
     }
@@ -59,6 +59,14 @@ public class Constants {
     public static final class PowerConstants {
         public static final double drivePowerLimit = 1.0;
         public static final double shooterPowerLimit = 1.0;
+    }
+
+    // ==== SENSOR DIO PORTS ====
+    // This is where you should put your sensor inputs that are used to align the ball
+    // inside the clocking systems.
+    public static final class ShooterSensorConstants{
+        public static final int kSensorTop = 1;
+        public static final int kSensorBottom = 0;
     }
 
     // ==== CONTROLLER PORTS ====

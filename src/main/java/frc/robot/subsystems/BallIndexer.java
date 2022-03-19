@@ -11,19 +11,19 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants;
-import frc.robot.commands.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class BallIndexer extends SubsystemBase {
 
     private DigitalInput bottomSensor;
     private DigitalInput topSensor;
-    private VictorSPX indexVictor = new VictorSPX(Constants.ShooterConstants.kClockMotorCanID);
+    private VictorSPX indexVictor;
 
     public BallIndexer() {
+        indexVictor = new VictorSPX(Constants.ShooterMotorConstants.kClockMotorCanID);
+
         bottomSensor = new DigitalInput(0);
         addChild("BottomSensor", bottomSensor);
 

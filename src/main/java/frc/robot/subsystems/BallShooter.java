@@ -12,20 +12,19 @@
 
 package frc.robot.subsystems;
 
-import frc.robot.commands.*;
+import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Encoder.IndexingType;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
-
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class BallShooter extends SubsystemBase {
 
-    private Spark shooterSparkMAX;
+    private CANSparkMax shooterSparkMAX;
     private Encoder shooterEncoder;
 
     public BallShooter() {
-        shooterSparkMAX = new Spark(2);
-        addChild("ShooterSparkMAX", shooterSparkMAX);
+        shooterSparkMAX = new CANSparkMax(Constants.ShooterMotorConstants.kShooterMotorCanID, MotorType.kBrushed);
         shooterSparkMAX.setInverted(false);
 
         shooterEncoder = new Encoder(14, 15, false);
