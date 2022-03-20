@@ -25,9 +25,9 @@ package frc.robot;
  */
 public class Constants {
 
-    // ==== DRIVE MOTOR CONTROLLERS ====
+    // ==== DRIVETRAiN MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
-    // with the correct CAN ID on the bus.
+    // with the correct CAN ID on the bus for the DRIVETRAIN system.
     public static final class DriveMotorConstants {
         public static final int kLeftFrontMotorCanID = 10;
         public static final int kRightFrontMotorCanID = 1;
@@ -55,10 +55,14 @@ public class Constants {
     // ==== POWER LIMITS ====
     // This is where you should put power limits for each subsystem that has power.
     // Be careful with power limits, this can cause bad things to happen if you give
-    // the subsystem more than enough power.
+    // the subsystem more than enough power. These will all have a range of -1.0 to 1.0
     public static final class PowerConstants {
         public static final double drivePowerLimit = 1.0;
         public static final double shooterPowerLimit = 1.0;
+        public static final double winchPowerLimit = 1.0;
+        public static final double tiltPowerLimit = 1.0;
+        public static final double clockingPowerLimit = 0.5;
+        public static final double intakePowerLimit = 0.5;
     }
 
     // ==== SENSOR DIO PORTS ====

@@ -45,6 +45,8 @@ public class BallClock extends SubsystemBase {
 
     /**
      * Accepts a ball into the clocking mechanism.
+     * 
+     * This will be used in conjunction with the intake mechanism.
      */
     public void acceptBall() {
         clockVictor.set(ControlMode.PercentOutput, 0.5);
@@ -52,6 +54,9 @@ public class BallClock extends SubsystemBase {
 
     /**
      * Sets a ball into the clocking mechanism and preps it for shooting
+     * 
+     * Once the ball is centered exactly then the shooter motor has to be
+     * running at the correct speed to launch the ball.
      */
     public void setBall() {
         if (bottomSensor.getValue() >= ShooterSensorConstants.kSensorLowerThreshold || topSensor.getValue() <= ShooterSensorConstants.kSensorUpperThreshold) {
@@ -67,6 +72,8 @@ public class BallClock extends SubsystemBase {
 
     /**
      * Rejects a from the clocking mechanism
+     * 
+     * This will be used in conjunction with the intake mechanism.
      */
     public void rejectBall() {
         clockVictor.set(ControlMode.PercentOutput, -0.5);

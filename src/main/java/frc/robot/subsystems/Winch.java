@@ -35,10 +35,20 @@ public class Winch extends SubsystemBase {
 
     }
 
+    /**
+     * Method to winch the robot up.
+     * 
+     * This will be used in conjunction with the tilting mechanism (Eilene).
+     */
     public void winchUp() {
         winchVictor.set(ControlMode.PercentOutput, 0.5);
     }
 
+    /**
+     * Method to winch the robot down.
+     * 
+     * This will be used in conjunctio with the tilting mechanism (Eilene).
+     */
     public void winchDown() {
         winchVictor.set(ControlMode.PercentOutput, -0.5);
     }
