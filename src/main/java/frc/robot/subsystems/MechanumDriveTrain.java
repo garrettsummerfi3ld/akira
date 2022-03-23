@@ -78,7 +78,7 @@ public class MechanumDriveTrain extends SubsystemBase {
         double xSpeed = xInput * speedSlider;
         double ySpeed = yInput * speedSlider;
         double zRotate = zInput * speedSlider;
-        drivetrain.driveCartesian(xSpeed, ySpeed, zRotate);
+        drivetrain.driveCartesian(ySpeed, xSpeed, zRotate);
     }
 
     /**
