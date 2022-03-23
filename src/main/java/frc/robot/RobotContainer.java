@@ -14,9 +14,13 @@ package frc.robot;
 
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.ControllerConstants;
+
 /**
  * This class is where the bulk of the robot should be declared. Since
  * Command-based is a
@@ -28,7 +32,6 @@ import edu.wpi.first.wpilibj2.command.Command;
  * here.
  */
 public class RobotContainer {
-
     private static RobotContainer m_robotContainer = new RobotContainer();
 
     // The robot's subsystems
@@ -38,6 +41,10 @@ public class RobotContainer {
     public final BallShooter m_ballShooter = new BallShooter();
     public final BallClock m_ballIClock = new BallClock();
     public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
+
+    // The robot controllers
+    private final static Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
+    private final static XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
 
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -80,5 +87,13 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // The selected command will be run in autonomous
         return m_chooser.getSelected();
+    }
+
+    public static Joystick getDriverJoystick() {
+        return driverJoystick;
+    }
+
+    public static XboxController getAuxController() {
+        return auxController;
     }
 }

@@ -11,7 +11,6 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.DriveMotorConstants;
-import frc.robot.Constants.PowerConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -20,7 +19,6 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class MechanumDriveTrain extends SubsystemBase {
-
     private final CANSparkMax leftFrontSparkMAX;
     private final CANSparkMax rightFrontSparkMAX;
     private final CANSparkMax leftRearSparkMAX;
@@ -55,8 +53,6 @@ public class MechanumDriveTrain extends SubsystemBase {
         addChild("Drivetrain", drivetrain);
         drivetrain.setSafetyEnabled(true);
         drivetrain.setExpiration(0.1);
-        drivetrain.setMaxOutput(PowerConstants.drivePowerLimit);
-
     }
 
     @Override
@@ -98,7 +94,7 @@ public class MechanumDriveTrain extends SubsystemBase {
     }
 
     /**
-     * Gets all encoder velocities from the drivetrain.
+     * Gets all encoder velocities from the drivetrain
      * 
      * @return double[] of all encoder values, will be returned in leftFront, rightFront, leftRear, rightRear and in units of RPM
      */

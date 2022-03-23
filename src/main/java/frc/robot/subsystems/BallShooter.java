@@ -13,6 +13,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.ShooterMotorConstants;
+import frc.robot.util.BallVelocity;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
@@ -20,7 +21,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class BallShooter extends SubsystemBase {
-
     private CANSparkMax shooterSparkMAX;
     private RelativeEncoder shooterEncoder;
 
@@ -41,6 +41,22 @@ public class BallShooter extends SubsystemBase {
     }
 
     /**
+     * Shoots ball
+     */
+    public void shootPrep() {
+
+        // Get distance from limelight
+
+        // Get best velocity from distance
+        double ballVelocity = BallVelocity.final_vr(0, 25, 0, 150);
+
+        double shootSpeed = ballVelocity * 1;
+
+        // Set motor velocity to the required velocity for a period of time
+        shooterSparkMAX.set(shootSpeed);
+    }
+
+    /**
      * Gets encoder position from the shooter motor
      * 
      * @return double[] of the encoder in units of revolutions
@@ -53,11 +69,14 @@ public class BallShooter extends SubsystemBase {
      * Gets encoder velocity from the shooter motor
      * 
      * @return double of the encoder in units of RPM
-     */    
+     */
     public double getEncoderVeolocity() {
         return shooterEncoder.getVelocity();
     }
 
+    /**
+     * Shoots ball at full speed
+     */
     public void shootBall() {
         shooterSparkMAX.set(1);
     }

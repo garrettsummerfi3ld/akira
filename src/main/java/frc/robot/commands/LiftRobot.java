@@ -4,11 +4,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Winch;
 
 public class LiftRobot extends CommandBase {
     private final Winch m_winch;
+
+    private final XboxController auxController = RobotContainer.getAuxController();
 
     public LiftRobot(Winch subsystem) {
         m_winch = subsystem;
@@ -23,6 +27,11 @@ public class LiftRobot extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (auxController.getLeftY() >= 0.25) {
+            m_winch.winchUp();
+        } else if (auxController.getLeftY() <= -0.25) {
+            m_winch.winchDown();
+        }
     }
 
     // Called once the command ends or is interrupted.

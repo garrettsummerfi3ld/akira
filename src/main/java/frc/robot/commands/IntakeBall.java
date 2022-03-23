@@ -4,11 +4,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.BallIntake;
 
 public class IntakeBall extends CommandBase {
     private final BallIntake m_ballIntake;
+
+    private final XboxController auxController = RobotContainer.getAuxController();
 
     public IntakeBall(BallIntake subsystem) {
         m_ballIntake = subsystem;
@@ -23,6 +27,12 @@ public class IntakeBall extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (auxController.getRightTriggerAxis() >= 0.25) {
+            m_ballIntake.intakeBall();
+        }
+        else if (auxController.getLeftTriggerAxis() >= 0.25) {
+            m_ballIntake.rejectBall();
+        }
     }
 
     // Called once the command ends or is interrupted.

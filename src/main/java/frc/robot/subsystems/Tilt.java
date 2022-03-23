@@ -36,45 +36,45 @@ public class Tilt extends SubsystemBase {
     }
 
     /**
-     * Method to tilt the robot up.
+     * Method to tilt the robot up
      * 
-     * This will be used in conjunction with the winch subsystem
+     * This will be used in conjunction with the winch subsystem (Otis)
      */
     public void tiltUp() {
         liftVictor.set(ControlMode.PercentOutput, 0.5);
     }
 
     /**
-     * Method to tilt the robot down.
+     * Method to tilt the robot down
      * 
-     * This will be used in conjucntion with the winch subsystem.
+     * This will be used in conjucntion with the winch subsystem (Otis)
      */
     public void tiltDown() {
         liftVictor.set(ControlMode.PercentOutput, -0.5);
     }
 
     /**
-     * Method to return the acceleration in the X axis.
+     * Method to return the acceleration in the X axis
      * 
-     * @return deouble Value in the X axis of acceleration.
+     * @return deouble Value in the X axis of acceleration
      */
     public double getAccelX() {
         return accel.getX();
     }
 
     /**
-     * Method to return the acceleration in the Y axis.
+     * Method to return the acceleration in the Y axis
      * 
-     * @return double Value in the Y axis of acceleration.
+     * @return double Value in the Y axis of acceleration
      */
     public double getAccelY() {
         return accel.getY();
     }
 
     /**
-     * Method to rerturn the acceleration in the Z axis.
+     * Method to rerturn the acceleration in the Z axis
      * 
-     * @return double Value in the Z axis of acceleration.
+     * @return double Value in the Z axis of acceleration
      */
     public double getAccelZ() {
         return accel.getZ();

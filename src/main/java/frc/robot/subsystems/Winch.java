@@ -16,13 +16,11 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Winch extends SubsystemBase {
-
     private VictorSPX winchVictor;
 
     public Winch() {
         winchVictor = new VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
         winchVictor.setInverted(false);
-
     }
 
     @Override
@@ -38,7 +36,7 @@ public class Winch extends SubsystemBase {
     /**
      * Method to winch the robot up.
      * 
-     * This will be used in conjunction with the tilting mechanism (Eilene).
+     * This will be used in conjunction with the tilting mechanism (Eileen)
      */
     public void winchUp() {
         winchVictor.set(ControlMode.PercentOutput, 0.5);
@@ -47,7 +45,7 @@ public class Winch extends SubsystemBase {
     /**
      * Method to winch the robot down.
      * 
-     * This will be used in conjunctio with the tilting mechanism (Eilene).
+     * This will be used in conjunctio with the tilting mechanism (Eileen)
      */
     public void winchDown() {
         winchVictor.set(ControlMode.PercentOutput, -0.5);

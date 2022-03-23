@@ -33,9 +33,9 @@ public class BallIntake extends SubsystemBase {
     }
 
     /**
-     * Method to intake a ball to the clocking mechanism.
+     * Method to intake a ball to the clocking mechanism
      * 
-     * This will be used in conjunction with the clocking mechanism.
+     * This will be used in conjunction with the clocking mechanism
      */
     public void intakeBall() {
         intakeVictor.set(ControlMode.PercentOutput, 0.5);
@@ -44,7 +44,7 @@ public class BallIntake extends SubsystemBase {
     /**
      * Method to reject a ball from the clocking mechanism
      * 
-     * This will be used in conjunction with the clocking mechanism.
+     * This will be used in conjunction with the clocking mechanism
      */
     public void rejectBall() {
         intakeVictor.set(ControlMode.PercentOutput, -0.5);

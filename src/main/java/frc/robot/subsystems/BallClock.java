@@ -18,14 +18,13 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class BallClock extends SubsystemBase {
-
     private AnalogInput bottomSensor;
     private AnalogInput topSensor;
     private VictorSPX clockVictor;
 
     public BallClock() {
         clockVictor = new VictorSPX(ShooterMotorConstants.kClockMotorCanID);
-        
+
         bottomSensor = new AnalogInput(ShooterSensorConstants.kSensorBottom);
         addChild("BottomSensor", bottomSensor);
 
@@ -44,9 +43,9 @@ public class BallClock extends SubsystemBase {
     }
 
     /**
-     * Accepts a ball into the clocking mechanism.
+     * Accepts a ball into the clocking mechanism
      * 
-     * This will be used in conjunction with the intake mechanism.
+     * This will be used in conjunction with the intake mechanism
      */
     public void acceptBall() {
         clockVictor.set(ControlMode.PercentOutput, 0.5);
@@ -56,24 +55,50 @@ public class BallClock extends SubsystemBase {
      * Sets a ball into the clocking mechanism and preps it for shooting
      * 
      * Once the ball is centered exactly then the shooter motor has to be
-     * running at the correct speed to launch the ball.
+     * running at the correct speed to launch the ball
      */
     public void setBall() {
-        if (bottomSensor.getValue() >= ShooterSensorConstants.kSensorLowerThreshold || topSensor.getValue() <= ShooterSensorConstants.kSensorUpperThreshold) {
+        if (checkBottomSensor() && !checkTopSensor()) {
             clockVictor.set(ControlMode.PercentOutput, 0.2);
-        }
-        else if (bottomSensor.getValue() <= ShooterSensorConstants.kSensorUpperThreshold || topSensor.getValue() >= ShooterSensorConstants.kSensorLowerThreshold) {
+        } else if (!checkBottomSensor() && checkTopSensor()) {
             clockVictor.set(ControlMode.PercentOutput, -0.2);
-        }
-        else {
+        } else {
             clockVictor.set(ControlMode.PercentOutput, 0);
+        }
+    }
+
+    /**
+     * Checks bottom sensor if the ball loaded is lined up properly
+     * 
+     * @return boolean status if ball is lined up properly
+     */
+    public Boolean checkBottomSensor() {
+        if (bottomSensor.getValue() >= ShooterSensorConstants.kSensorBottomLowerThreshold
+                || bottomSensor.getValue() <= ShooterSensorConstants.kSensorBottomUpperThreshold) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Checks top sensor if the ball loaded is lined up properly
+     * 
+     * @return boolean status if ball is lined up properly
+     */
+    public Boolean checkTopSensor() {
+        if (topSensor.getValue() >= ShooterSensorConstants.kSensorTopLowerThreshold
+                || topSensor.getValue() <= ShooterSensorConstants.kSensorTopUpperThreshold) {
+            return true;
+        } else {
+            return false;
         }
     }
 
     /**
      * Rejects a from the clocking mechanism
      * 
-     * This will be used in conjunction with the intake mechanism.
+     * This will be used in conjunction with the intake mechanism
      */
     public void rejectBall() {
         clockVictor.set(ControlMode.PercentOutput, -0.5);

@@ -25,7 +25,7 @@ package frc.robot;
  */
 public class Constants {
 
-    // ==== DRIVETRAiN MOTOR CONTROLLERS ====
+    // ==== DRIVETRAIN MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
     // with the correct CAN ID on the bus for the DRIVETRAIN system.
     public static final class DriveMotorConstants {
@@ -65,14 +65,16 @@ public class Constants {
         public static final double intakePowerLimit = 0.5;
     }
 
-    // ==== SENSOR DIO PORTS ====
+    // ==== SENSOR ANALOG PORTS ====
     // This is where you should put your sensor inputs that are used to align the ball
     // inside the clocking systems.
     public static final class ShooterSensorConstants{
         public static final int kSensorTop = 1;
         public static final int kSensorBottom = 0;
-        public static final int kSensorLowerThreshold = 3500;
-        public static final int kSensorUpperThreshold = 200;
+        public static final int kSensorTopLowerThreshold = 3500;
+        public static final int kSensorTopUpperThreshold = 200;
+        public static final int kSensorBottomLowerThreshold = 3500;
+        public static final int kSensorBottomUpperThreshold = 200;
     }
 
     // ==== CONTROLLER PORTS ====
