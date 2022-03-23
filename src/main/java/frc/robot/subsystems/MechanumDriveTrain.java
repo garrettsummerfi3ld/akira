@@ -69,11 +69,15 @@ public class MechanumDriveTrain extends SubsystemBase {
      * Main drivetrain movement, this pipes all the joystick movement to the drivetrain and has it driving
      * in a cartesian plane, with x, y, and z axises
      * 
-     * @param xSpeed Input from the x-axis on the joystick
-     * @param ySpeed Input from the y-axis on the joystick
-     * @param zRotate Inpt from the rotate on the joystick
+     * @param xSpeed double Input from the x-axis on the joystick
+     * @param ySpeed double Input from the y-axis on the joystick
+     * @param zRotate double Input from the rotate on the joystick
+     * @param speedSlider double Input from the throttle on the joystick
      */
-    public void drivetrain(double xSpeed, double ySpeed, double zRotate){
+    public void drivetrain(double xInput, double yInput, double zInput, double speedSlider){
+        double xSpeed = xInput * speedSlider;
+        double ySpeed = yInput * speedSlider;
+        double zRotate = zInput * speedSlider;
         drivetrain.driveCartesian(xSpeed, ySpeed, zRotate);
     }
 

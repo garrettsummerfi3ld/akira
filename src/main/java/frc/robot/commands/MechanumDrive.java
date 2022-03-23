@@ -25,7 +25,7 @@ public class MechanumDrive extends CommandBase {
 
     @Override
     public void execute() {
-        m_mechDriveTrain.drivetrain(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getZ());
+        m_mechDriveTrain.drivetrain(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getTwist(), driveJoystick.getThrottle());
     }
 
     @Override
