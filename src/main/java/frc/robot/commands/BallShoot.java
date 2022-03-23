@@ -11,14 +11,25 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.BallClock;
 import frc.robot.subsystems.BallShooter;
 
 public class BallShoot extends CommandBase {
+    // Subsystems
     public final BallShooter m_ballShooter;
+    public final BallClock m_ballClock;
 
-    public BallShoot(BallShooter subsystem) {
-        m_ballShooter = subsystem;
+    /**
+     * Creates a constructor of the ball shooter commands
+     * @param subShooter BallShooter Shooter subsystem
+     * @param subClock BallClock Clocking subsystem
+     */
+    public BallShoot(BallShooter subShooter, BallClock subClock) {
+        m_ballShooter = subShooter;
         addRequirements(m_ballShooter);
+
+        m_ballClock = subClock;
+        addRequirements(m_ballClock);
     }
 
     // Called when the command is initially scheduled.
