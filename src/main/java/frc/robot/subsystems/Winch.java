@@ -16,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Winch extends SubsystemBase {
+    // Hardware
     private VictorSPX winchVictor;
 
     public Winch() {
@@ -34,7 +35,7 @@ public class Winch extends SubsystemBase {
     }
 
     /**
-     * Method to winch the robot up.
+     * Method to winch the robot up
      * 
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */
@@ -43,7 +44,7 @@ public class Winch extends SubsystemBase {
     }
 
     /**
-     * Method to winch the robot down.
+     * Method to winch the robot down
      * 
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */

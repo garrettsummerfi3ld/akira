@@ -10,6 +10,7 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.BallIntake;
 
 public class IntakeBall extends CommandBase {
+    // Subsystems
     private final BallIntake m_ballIntake;
 
     private final XboxController auxController = RobotContainer.getAuxController();
@@ -29,8 +30,7 @@ public class IntakeBall extends CommandBase {
     public void execute() {
         if (auxController.getRightTriggerAxis() >= 0.25) {
             m_ballIntake.intakeBall();
-        }
-        else if (auxController.getLeftTriggerAxis() >= 0.25) {
+        } else if (auxController.getLeftTriggerAxis() >= 0.25) {
             m_ballIntake.rejectBall();
         }
     }

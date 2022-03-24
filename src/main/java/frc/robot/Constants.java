@@ -27,7 +27,7 @@ public class Constants {
 
     // ==== DRIVETRAIN MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
-    // with the correct CAN ID on the bus for the DRIVETRAIN system.
+    // with the correct CAN ID on the bus for the DRIVETRAIN system
     public static final class DriveMotorConstants {
         public static final int kLeftFrontMotorCanID = 10;
         public static final int kRightFrontMotorCanID = 1;
@@ -37,7 +37,8 @@ public class Constants {
 
     // ==== SHOOTER MOTOR CONTROLLERS ====
     // This is where you should put your motor controllers and have them associated
-    // with the correct CAN ID on the bus for the SHOOTER, CLOCKING, and INTAKE systems.
+    // with the correct CAN ID on the bus for the SHOOTER, CLOCKING, and INTAKE
+    // systems.
     public static final class ShooterMotorConstants {
         public static final int kShooterMotorCanID = 4;
         public static final int kIntakeMotorCanID = 7;
@@ -55,7 +56,8 @@ public class Constants {
     // ==== POWER LIMITS ====
     // This is where you should put power limits for each subsystem that has power.
     // Be careful with power limits, this can cause bad things to happen if you give
-    // the subsystem more than enough power. These will all have a range of -1.0 to 1.0
+    // the subsystem more than enough power. These will all have a range of -1.0 to
+    // 1.0
     public static final class PowerConstants {
         public static final double drivePowerLimit = 1.0;
         public static final double shooterPowerLimit = 1.0;
@@ -66,9 +68,9 @@ public class Constants {
     }
 
     // ==== SENSOR ANALOG PORTS ====
-    // This is where you should put your sensor inputs that are used to align the ball
-    // inside the clocking systems.
-    public static final class ShooterSensorConstants{
+    // This is where you should put your sensor inputs that are used to align the
+    // ball inside the clocking systems
+    public static final class ShooterSensorConstants {
         public static final int kSensorTop = 1;
         public static final int kSensorBottom = 0;
         public static final int kSensorTopLowerThreshold = 3500;
@@ -78,8 +80,8 @@ public class Constants {
     }
 
     // ==== CONTROLLER PORTS ====
-    // This is where you should put your controller ports for the robot. This is vital
-    // as the ports have to be in this order for things to work properly.
+    // This is where you should put your controller ports for the robot. This is
+    // vital as the ports have to be in this order for things to work properly
     public static final class ControllerConstants {
         public static final int driverJoystickPort = 0;
         public static final int auxXboxController = 1;

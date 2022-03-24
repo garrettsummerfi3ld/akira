@@ -6,13 +6,14 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants.ControllerConstants;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Tilt;
 
 public class TiltRobot extends CommandBase {
+    // Subsystems
     private final Tilt m_tilt;
 
-    private final XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
+    private final XboxController auxController = RobotContainer.getAuxController();
 
     public TiltRobot(Tilt subsystem) {
         m_tilt = subsystem;
@@ -27,10 +28,9 @@ public class TiltRobot extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (auxController.getLeftY() >= 0.25){
+        if (auxController.getLeftY() >= 0.25) {
             m_tilt.tiltUp();
-        }
-        else if (auxController.getLeftY() <= -0.25){
+        } else if (auxController.getLeftY() <= -0.25) {
             m_tilt.tiltDown();
         }
     }

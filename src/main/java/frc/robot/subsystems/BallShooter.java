@@ -21,6 +21,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class BallShooter extends SubsystemBase {
+    // Hardware
     private CANSparkMax shooterSparkMAX;
     private RelativeEncoder shooterEncoder;
 

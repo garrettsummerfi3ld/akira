@@ -17,6 +17,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class Tilt extends SubsystemBase {
+    // Hardware
     private VictorSPX liftVictor;
     private BuiltInAccelerometer accel;
 

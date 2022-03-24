@@ -9,7 +9,7 @@ public class BallVelocity {
      * Checks if ball will actually land target from distance
      * 
      * @param dist Distance to target
-     * @param vr 
+     * @param vr
      * @return margin of error
      */
     public static double deviance(double dist, double vr) {
@@ -51,9 +51,9 @@ public class BallVelocity {
     /**
      * Gets final RPM of shooting the ball from current distance
      * 
-     * @param dist Distance to target
-     * @param accuracy Accuracy
-     * @param left_bound Amount of error to go left
+     * @param dist        Distance to target
+     * @param accuracy    Accuracy
+     * @param left_bound  Amount of error to go left
      * @param right_bound Amount of error to go right
      * @return Power to shoot ball from current distance
      */
@@ -65,7 +65,7 @@ public class BallVelocity {
             // Too large of a velocity
             if (deviance(dist, test_vr) > 0) {
                 right_bound = (right_bound + left_bound) / 2;
-            // Too small of a velocity
+                // Too small of a velocity
             } else {
                 left_bound = (right_bound + left_bound) / 2;
             }

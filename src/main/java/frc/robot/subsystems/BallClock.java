@@ -18,6 +18,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 public class BallClock extends SubsystemBase {
+    // Hardware
     private AnalogInput bottomSensor;
     private AnalogInput topSensor;
     private VictorSPX clockVictor;

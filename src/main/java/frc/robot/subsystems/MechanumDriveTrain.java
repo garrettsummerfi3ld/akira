@@ -19,6 +19,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class MechanumDriveTrain extends SubsystemBase {
+    // Hardware
     private final CANSparkMax leftFrontSparkMAX;
     private final CANSparkMax rightFrontSparkMAX;
     private final CANSparkMax leftRearSparkMAX;
@@ -30,7 +31,8 @@ public class MechanumDriveTrain extends SubsystemBase {
     private RelativeEncoder rightRearEncoder;
 
     /**
-     * The main drivetrain class, this has all the motors and encoders that relate to the drivetrain
+     * The main drivetrain class, this has all the motors and encoders that relate
+     * to the drivetrain
      */
     public MechanumDriveTrain() {
         leftFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
@@ -66,15 +68,16 @@ public class MechanumDriveTrain extends SubsystemBase {
     }
 
     /**
-     * Main drivetrain movement, this pipes all the joystick movement to the drivetrain and has it driving
+     * Main drivetrain movement, this pipes all the joystick movement to the
+     * drivetrain and has it driving
      * in a cartesian plane, with x, y, and z axises
      * 
-     * @param xSpeed double Input from the x-axis on the joystick
-     * @param ySpeed double Input from the y-axis on the joystick
-     * @param zRotate double Input from the rotate on the joystick
+     * @param xSpeed      double Input from the x-axis on the joystick
+     * @param ySpeed      double Input from the y-axis on the joystick
+     * @param zRotate     double Input from the rotate on the joystick
      * @param speedSlider double Input from the throttle on the joystick
      */
-    public void drivetrain(double xInput, double yInput, double zInput, double speedSlider){
+    public void drivetrain(double xInput, double yInput, double zInput, double speedSlider) {
         double xSpeed = xInput * speedSlider;
         double ySpeed = yInput * speedSlider;
         double zRotate = zInput * speedSlider;
@@ -84,7 +87,8 @@ public class MechanumDriveTrain extends SubsystemBase {
     /**
      * Gets all the encoder positions from the drivetrain
      * 
-     * @return double[] of all encoder values, will be returned in leftFront, rightFront, leftRear, rightRear and in units of revolutions
+     * @return double[] of all encoder values, will be returned in leftFront,
+     *         rightFront, leftRear, rightRear and in units of revolutions
      */
     public double[] getEncoderPositions() {
         double leftFrontEnc = leftFrontEncoder.getPosition();
@@ -92,24 +96,21 @@ public class MechanumDriveTrain extends SubsystemBase {
         double leftRearEnc = rightFrontEncoder.getPosition();
         double rightRearEnc = rightRearEncoder.getPosition();
 
-        double[] encVals = {leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc};
-
-        return encVals;
+        return new double[] { leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc };
     }
 
     /**
      * Gets all encoder velocities from the drivetrain
      * 
-     * @return double[] of all encoder values, will be returned in leftFront, rightFront, leftRear, rightRear and in units of RPM
+     * @return double[] of all encoder values, will be returned in leftFront,
+     *         rightFront, leftRear, rightRear and in units of RPM
      */
-    public double[] getEncoderVeolocity(){
+    public double[] getEncoderVeolocity() {
         double leftFrontEnc = leftFrontEncoder.getVelocity();
         double rightFrontEnc = leftRearEncoder.getVelocity();
         double leftRearEnc = rightFrontEncoder.getVelocity();
         double rightRearEnc = rightRearEncoder.getVelocity();
 
-        double[] encVals = {leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc};
-
-        return encVals;
+        return new double[] { leftFrontEnc, rightFrontEnc, leftRearEnc, rightRearEnc };
     }
 }

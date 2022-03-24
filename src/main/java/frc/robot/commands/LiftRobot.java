@@ -10,6 +10,7 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.Winch;
 
 public class LiftRobot extends CommandBase {
+    // Subsystems
     private final Winch m_winch;
 
     private final XboxController auxController = RobotContainer.getAuxController();

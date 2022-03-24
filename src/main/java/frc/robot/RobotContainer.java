@@ -41,6 +41,7 @@ public class RobotContainer {
     public final BallShooter m_ballShooter = new BallShooter();
     public final BallClock m_ballIClock = new BallClock();
     public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
+    public final PowerPanel m_power = new PowerPanel();
 
     // The robot controllers
     private final static Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
@@ -61,6 +62,7 @@ public class RobotContainer {
         SmartDashboard.putData("Intake", m_ballIntake);
         SmartDashboard.putData("Clock", m_ballIClock);
         SmartDashboard.putData("Shooter", m_ballShooter);
+        SmartDashboard.putData("Power Distribution", m_power);
     }
 
     public static RobotContainer getInstance() {
@@ -89,10 +91,18 @@ public class RobotContainer {
         return m_chooser.getSelected();
     }
 
+    /**
+     * Returns the driver joystick
+     * @return Joystick the main driver joystick
+     */
     public static Joystick getDriverJoystick() {
         return driverJoystick;
     }
 
+    /**
+     * Returns the auxiliary Xbox Controller
+     * @return XboxController secondary Xbox controller
+     */
     public static XboxController getAuxController() {
         return auxController;
     }
