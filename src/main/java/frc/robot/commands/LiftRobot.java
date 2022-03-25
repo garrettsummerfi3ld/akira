@@ -13,6 +13,7 @@ public class LiftRobot extends CommandBase {
     // Subsystems
     private final Winch m_winch;
 
+    // Controllers
     private final XboxController auxController = RobotContainer.getAuxController();
 
     public LiftRobot(Winch subsystem) {

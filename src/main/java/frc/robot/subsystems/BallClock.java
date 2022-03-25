@@ -105,4 +105,10 @@ public class BallClock extends SubsystemBase {
         clockVictor.set(ControlMode.PercentOutput, -0.5);
     }
 
+    /**
+     * Releases ball to go into the shooter mechanism.
+     */
+    public void releaseBall() {
+        clockVictor.set(ControlMode.PercentOutput, 1);
+    }
 }

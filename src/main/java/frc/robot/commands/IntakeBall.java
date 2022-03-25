@@ -13,6 +13,7 @@ public class IntakeBall extends CommandBase {
     // Subsystems
     private final BallIntake m_ballIntake;
 
+    // Controllers
     private final XboxController auxController = RobotContainer.getAuxController();
 
     public IntakeBall(BallIntake subsystem) {

@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ControllerConstants;
 
 /**
@@ -39,7 +40,7 @@ public class RobotContainer {
     public final Tilt m_tilt = new Tilt();
     public final BallIntake m_ballIntake = new BallIntake();
     public final BallShooter m_ballShooter = new BallShooter();
-    public final BallClock m_ballIClock = new BallClock();
+    public final BallClock m_ballClock = new BallClock();
     public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
     public final PowerPanel m_power = new PowerPanel();
 
@@ -60,7 +61,7 @@ public class RobotContainer {
         SmartDashboard.putData("Winch", m_winch);
         SmartDashboard.putData("Tilt", m_tilt);
         SmartDashboard.putData("Intake", m_ballIntake);
-        SmartDashboard.putData("Clock", m_ballIClock);
+        SmartDashboard.putData("Clock", m_ballClock);
         SmartDashboard.putData("Shooter", m_ballShooter);
         SmartDashboard.putData("Power Distribution", m_power);
     }
@@ -78,7 +79,21 @@ public class RobotContainer {
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
      */
     private void configureButtonBindings() {
-        // Create some buttons
+        // Buttons to be bound to actions
+        JoystickButton driverTrigger = new JoystickButton(driverJoystick, Joystick.ButtonType.kTrigger.value);
+        JoystickButton driverTopButton = new JoystickButton(driverJoystick, Joystick.ButtonType.kTop.value);
+
+        // Shoots ball with trigger
+        driverTrigger.whenPressed(
+                () -> {
+                    m_ballClock.releaseBall();
+                });
+
+        // Revs up ball shooter to shoot at full speed
+        driverTopButton.whenPressed(
+                () -> {
+                    m_ballShooter.shootBall();
+                });
     }
 
     /**
@@ -93,6 +108,7 @@ public class RobotContainer {
 
     /**
      * Returns the driver joystick
+     * 
      * @return Joystick the main driver joystick
      */
     public static Joystick getDriverJoystick() {
@@ -101,6 +117,7 @@ public class RobotContainer {
 
     /**
      * Returns the auxiliary Xbox Controller
+     * 
      * @return XboxController secondary Xbox controller
      */
     public static XboxController getAuxController() {
