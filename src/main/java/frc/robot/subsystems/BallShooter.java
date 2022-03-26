@@ -66,6 +66,9 @@ public class BallShooter extends SubsystemBase {
         shooterSparkMAX.set(1);
     }
 
+    /**
+     * Stops shooting motor
+     */
     public void stopShooter(){
         shooterSparkMAX.set(0);
     }

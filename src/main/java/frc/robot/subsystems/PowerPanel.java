@@ -22,7 +22,7 @@ public class PowerPanel extends SubsystemBase {
     }
 
     /**
-     * Retuns current from a channel on the PDP
+     * Returns current from a channel on the PDP
      * 
      * @param channel int Channel on the PDP
      * @return double Amount of current running to that channel
@@ -44,7 +44,7 @@ public class PowerPanel extends SubsystemBase {
      * Returns all vitals of the power distribution panel
      * 
      * @return double[] Temperature, total current, total energy, total power, and
-     *         votage in that order
+     *         voltage in that order
      */
     public double[] getVitals() {
         double temp = powDist.getTemperature();

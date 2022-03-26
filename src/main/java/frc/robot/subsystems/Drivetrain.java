@@ -103,7 +103,7 @@ public class Drivetrain extends SubsystemBase {
      * @return double[] of all encoder values, will be returned in leftFront,
      *         rightFront, leftRear, rightRear and in units of RPM
      */
-    public double[] getEncoderVeolocity() {
+    public double[] getEncoderVelocity() {
         double leftFrontEnc = leftFrontEncoder.getVelocity();
         double rightFrontEnc = leftRearEncoder.getVelocity();
         double leftRearEnc = rightFrontEncoder.getVelocity();

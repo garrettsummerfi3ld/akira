@@ -52,6 +52,12 @@ public class Winch extends SubsystemBase {
         winchVictor.set(ControlMode.PercentOutput, -0.5);
     }
 
+    /**
+     * Method to stop the winch in its position
+     * 
+     * This will not keep it in its position, rather stop all power going to the
+     * power
+     */
     public void winchStop() {
         winchVictor.set(ControlMode.PercentOutput, 0);
     }

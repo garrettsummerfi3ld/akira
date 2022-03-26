@@ -51,6 +51,9 @@ public class BallIntake extends SubsystemBase {
         intakeVictor.set(ControlMode.PercentOutput, -0.5);
     }
 
+    /**
+     * Method to stop the intake motor
+     */
     public void stopIntake() {
         intakeVictor.set(ControlMode.PercentOutput, 0);
     }
