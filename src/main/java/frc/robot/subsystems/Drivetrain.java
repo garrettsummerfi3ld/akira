@@ -11,6 +11,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.DriveMotorConstants;
+import frc.robot.Constants.PowerConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -18,7 +19,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
-public class MechanumDriveTrain extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
     // Hardware
     private final CANSparkMax leftFrontSparkMAX;
     private final CANSparkMax rightFrontSparkMAX;
@@ -34,27 +35,28 @@ public class MechanumDriveTrain extends SubsystemBase {
      * The main drivetrain class, this has all the motors and encoders that relate
      * to the drivetrain
      */
-    public MechanumDriveTrain() {
+    public Drivetrain() {
         leftFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
         leftFrontSparkMAX.setInverted(false);
-        leftFrontEncoder = leftFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
+        leftFrontEncoder = leftFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
         rightFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
         rightFrontSparkMAX.setInverted(false);
-        rightFrontEncoder = rightFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
+        rightFrontEncoder = rightFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
         leftRearSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
         leftRearSparkMAX.setInverted(false);
-        leftRearEncoder = leftRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
+        leftRearEncoder = leftRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
         rightRearSparkMAX = new CANSparkMax(DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
         rightRearSparkMAX.setInverted(false);
-        rightRearEncoder = rightRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
+        rightRearEncoder = rightRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
-        drivetrain = new MecanumDrive(leftFrontSparkMAX, rightFrontSparkMAX, leftRearSparkMAX, rightRearSparkMAX);
+        drivetrain = new MecanumDrive(leftFrontSparkMAX, leftRearSparkMAX, rightFrontSparkMAX, rightRearSparkMAX);
         addChild("Drivetrain", drivetrain);
         drivetrain.setSafetyEnabled(true);
         drivetrain.setExpiration(0.1);
+        drivetrain.setMaxOutput(PowerConstants.drivePowerLimit);
     }
 
     @Override
@@ -72,16 +74,12 @@ public class MechanumDriveTrain extends SubsystemBase {
      * drivetrain and has it driving
      * in a cartesian plane, with x, y, and z axises
      * 
-     * @param xSpeed      double Input from the x-axis on the joystick
-     * @param ySpeed      double Input from the y-axis on the joystick
-     * @param zRotate     double Input from the rotate on the joystick
-     * @param speedSlider double Input from the throttle on the joystick
+     * @param xInput      double Input from the x-axis on the joystick
+     * @param yInput      double Input from the y-axis on the joystick
+     * @param zInput     double Input from the rotate on the joystick
      */
-    public void drivetrain(double xInput, double yInput, double zInput, double speedSlider) {
-        double xSpeed = xInput * speedSlider;
-        double ySpeed = yInput * speedSlider;
-        double zRotate = zInput * speedSlider;
-        drivetrain.driveCartesian(ySpeed, xSpeed, zRotate);
+    public void drive(double xInput, double yInput, double zInput) {
+        drivetrain.driveCartesian(-yInput, xInput, zInput);
     }
 
     /**

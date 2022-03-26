@@ -6,17 +6,17 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.MechanumDriveTrain;
+import frc.robot.Constants.ControllerConstants;
+import frc.robot.subsystems.Drivetrain;
 
 public class MechanumDrive extends CommandBase {
     // Subsystems
-    private final MechanumDriveTrain m_mechDriveTrain;
+    private final Drivetrain m_mechDriveTrain;
 
     // Controllers
-    private final Joystick driveJoystick = RobotContainer.getDriverJoystick();
+    private final Joystick driveJoystick = new Joystick(ControllerConstants.driverJoystickPort);
 
-    public MechanumDrive(MechanumDriveTrain subsystem) {
+    public MechanumDrive(Drivetrain subsystem) {
         m_mechDriveTrain = subsystem;
         addRequirements(m_mechDriveTrain);
     }
@@ -27,8 +27,7 @@ public class MechanumDrive extends CommandBase {
 
     @Override
     public void execute() {
-        m_mechDriveTrain.drivetrain(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getTwist(),
-                driveJoystick.getThrottle());
+        m_mechDriveTrain.drive(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getZ());
     }
 
     @Override

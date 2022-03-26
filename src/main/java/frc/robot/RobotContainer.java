@@ -41,7 +41,7 @@ public class RobotContainer {
     public final BallIntake m_ballIntake = new BallIntake();
     public final BallShooter m_ballShooter = new BallShooter();
     public final BallClock m_ballClock = new BallClock();
-    public final MechanumDriveTrain m_mechanumDrive = new MechanumDriveTrain();
+    public final Drivetrain m_mechanumDrive = new Drivetrain();
     public final PowerPanel m_power = new PowerPanel();
 
     // The robot controllers
