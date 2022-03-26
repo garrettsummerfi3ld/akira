@@ -35,13 +35,13 @@ public class RobotContainer {
     private static RobotContainer m_robotContainer = new RobotContainer();
 
     // The robot's subsystems
-    public final Winch m_winch = new Winch();
-    public final Tilt m_tilt = new Tilt();
-    public final BallIntake m_ballIntake = new BallIntake();
-    public final BallShooter m_ballShooter = new BallShooter();
-    public final BallClock m_ballClock = new BallClock();
-    public final Drivetrain m_mechanumDrive = new Drivetrain();
-    public final PowerPanel m_power = new PowerPanel();
+    private final Winch m_winch = new Winch();
+    private final Tilt m_tilt = new Tilt();
+    private final BallIntake m_ballIntake = new BallIntake();
+    private final BallShooter m_ballShooter = new BallShooter();
+    private final BallClock m_ballClock = new BallClock();
+    private final Drivetrain m_mechanumDrive = new Drivetrain();
+    private final PowerPanel m_power = new PowerPanel();
 
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 

@@ -26,8 +26,9 @@ public class BallShoot extends CommandBase {
 
     /**
      * Creates a constructor of the ball shooter commands
+     * 
      * @param subShooter BallShooter Shooter subsystem
-     * @param subClock BallClock Clocking subsystem
+     * @param subClock   BallClock Clocking subsystem
      */
     public BallShoot(BallShooter subShooter, BallClock subClock) {
         m_ballShooter = subShooter;
@@ -45,15 +46,22 @@ public class BallShoot extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (driverJoystick.getTrigger()){
+        if (driverJoystick.getTrigger()) {
             m_ballClock.releaseBall();
         }
 
-        if (driverJoystick.getTop()){
+        if (driverJoystick.getTop()) {
             m_ballShooter.shootBall();
-        }
-        else{
+        } else {
             m_ballShooter.stopShooter();
+        }
+
+        if (driverJoystick.getRawButton(3)) {
+            m_ballClock.acceptBall();
+        } else if (driverJoystick.getRawButton(4)) {
+            m_ballClock.rejectBall();
+        } else {
+            m_ballClock.stopClock();
         }
     }
 
