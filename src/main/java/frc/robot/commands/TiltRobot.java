@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.subsystems.Tilt;
 
 public class TiltRobot extends CommandBase {
@@ -14,7 +14,7 @@ public class TiltRobot extends CommandBase {
     private final Tilt m_tilt;
 
     // Controllers
-    private final XboxController auxController = RobotContainer.getAuxController();
+    private final XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
 
     public TiltRobot(Tilt subsystem) {
         m_tilt = subsystem;

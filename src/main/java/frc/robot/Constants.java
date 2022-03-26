@@ -59,6 +59,7 @@ public class Constants {
     // the subsystem more than enough power. These will all have a range of -1.0 to
     // 1.0
     public static final class PowerConstants {
+        public static final int kPowerDisroCanID = 11;
         public static final double drivePowerLimit = 1.0;
         public static final double shooterPowerLimit = 1.0;
         public static final double winchPowerLimit = 1.0;

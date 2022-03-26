@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ControllerConstants;
 
 /**
@@ -44,19 +43,12 @@ public class RobotContainer {
     public final Drivetrain m_mechanumDrive = new Drivetrain();
     public final PowerPanel m_power = new PowerPanel();
 
-    // The robot controllers
-    private final static Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
-    private final static XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
-
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
     private RobotContainer() {
 
-        configureButtonBindings();
-
         m_mechanumDrive.setDefaultCommand(new MechanumDrive(m_mechanumDrive));
 
-        SmartDashboard.putData("Auto Mode", m_chooser);
         SmartDashboard.putData("Drivetrain", m_mechanumDrive);
         SmartDashboard.putData("Winch", m_winch);
         SmartDashboard.putData("Tilt", m_tilt);
@@ -71,32 +63,6 @@ public class RobotContainer {
     }
 
     /**
-     * Use this method to define your button->command mappings. Buttons can be
-     * created by
-     * instantiating a {@link GenericHID} or one of its subclasses ({@link
-     * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing
-     * it to a
-     * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-     */
-    private void configureButtonBindings() {
-        // Buttons to be bound to actions
-        JoystickButton driverTrigger = new JoystickButton(driverJoystick, Joystick.ButtonType.kTrigger.value);
-        JoystickButton driverTopButton = new JoystickButton(driverJoystick, Joystick.ButtonType.kTop.value);
-
-        // Shoots ball with trigger
-        driverTrigger.whenPressed(
-                () -> {
-                    m_ballClock.releaseBall();
-                });
-
-        // Revs up ball shooter to shoot at full speed
-        driverTopButton.whenPressed(
-                () -> {
-                    m_ballShooter.shootBall();
-                });
-    }
-
-    /**
      * Use this to pass the autonomous command to the main {@link Robot} class.
      *
      * @return the command to run in autonomous
@@ -104,23 +70,5 @@ public class RobotContainer {
     public Command getAutonomousCommand() {
         // The selected command will be run in autonomous
         return m_chooser.getSelected();
-    }
-
-    /**
-     * Returns the driver joystick
-     * 
-     * @return Joystick the main driver joystick
-     */
-    public static Joystick getDriverJoystick() {
-        return driverJoystick;
-    }
-
-    /**
-     * Returns the auxiliary Xbox Controller
-     * 
-     * @return XboxController secondary Xbox controller
-     */
-    public static XboxController getAuxController() {
-        return auxController;
     }
 }

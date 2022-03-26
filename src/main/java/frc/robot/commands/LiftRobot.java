@@ -6,7 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.subsystems.Winch;
 
 public class LiftRobot extends CommandBase {
@@ -14,7 +14,7 @@ public class LiftRobot extends CommandBase {
     private final Winch m_winch;
 
     // Controllers
-    private final XboxController auxController = RobotContainer.getAuxController();
+    private final XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
 
     public LiftRobot(Winch subsystem) {
         m_winch = subsystem;

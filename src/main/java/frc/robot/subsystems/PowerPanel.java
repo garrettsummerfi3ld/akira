@@ -7,13 +7,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.PowerConstants;
 
 public class PowerPanel extends SubsystemBase {
     // Hardware
     PowerDistribution powDist;
 
     public PowerPanel() {
-        powDist = new PowerDistribution(0, ModuleType.kCTRE);
+        powDist = new PowerDistribution(PowerConstants.kPowerDisroCanID, ModuleType.kCTRE);
     }
 
     @Override

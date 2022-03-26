@@ -10,7 +10,9 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.ControllerConstants;
 import frc.robot.subsystems.BallClock;
 import frc.robot.subsystems.BallShooter;
 
@@ -18,6 +20,9 @@ public class BallShoot extends CommandBase {
     // Subsystems
     public final BallShooter m_ballShooter;
     public final BallClock m_ballClock;
+
+    // Controllers
+    private final Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
 
     /**
      * Creates a constructor of the ball shooter commands
