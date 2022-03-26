@@ -45,6 +45,16 @@ public class BallShoot extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
+        if (driverJoystick.getTrigger()){
+            m_ballClock.releaseBall();
+        }
+
+        if (driverJoystick.getTop()){
+            m_ballShooter.shootBall();
+        }
+        else{
+            m_ballShooter.stopShooter();
+        }
     }
 
     // Called once the command ends or is interrupted.

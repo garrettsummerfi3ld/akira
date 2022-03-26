@@ -34,6 +34,9 @@ public class TiltRobot extends CommandBase {
         } else if (auxController.getLeftY() <= -0.25) {
             m_tilt.tiltDown();
         }
+        else{
+            m_tilt.tiltStop();
+        }
     }
 
     // Called once the command ends or is interrupted.

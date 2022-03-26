@@ -34,6 +34,9 @@ public class IntakeBall extends CommandBase {
         } else if (auxController.getLeftTriggerAxis() >= 0.25) {
             m_ballIntake.rejectBall();
         }
+        else {
+            m_ballIntake.stopIntake();
+        }
     }
 
     // Called once the command ends or is interrupted.

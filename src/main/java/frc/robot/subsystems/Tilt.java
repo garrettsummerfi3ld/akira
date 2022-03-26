@@ -54,6 +54,10 @@ public class Tilt extends SubsystemBase {
         liftVictor.set(ControlMode.PercentOutput, -0.5);
     }
 
+    public void tiltStop() {
+        liftVictor.set(ControlMode.PercentOutput, 0);
+    }
+
     /**
      * Method to return the acceleration in the X axis
      * 

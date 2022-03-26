@@ -51,4 +51,8 @@ public class Winch extends SubsystemBase {
     public void winchDown() {
         winchVictor.set(ControlMode.PercentOutput, -0.5);
     }
+
+    public void winchStop() {
+        winchVictor.set(ControlMode.PercentOutput, 0);
+    }
 }

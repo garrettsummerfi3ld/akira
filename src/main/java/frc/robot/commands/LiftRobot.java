@@ -34,6 +34,9 @@ public class LiftRobot extends CommandBase {
         } else if (auxController.getLeftY() <= -0.25) {
             m_winch.winchDown();
         }
+        else{
+            m_winch.winchStop();
+        }
     }
 
     // Called once the command ends or is interrupted.

@@ -50,4 +50,8 @@ public class BallIntake extends SubsystemBase {
     public void rejectBall() {
         intakeVictor.set(ControlMode.PercentOutput, -0.5);
     }
+
+    public void stopIntake() {
+        intakeVictor.set(ControlMode.PercentOutput, 0);
+    }
 }

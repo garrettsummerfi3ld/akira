@@ -111,4 +111,8 @@ public class BallClock extends SubsystemBase {
     public void releaseBall() {
         clockVictor.set(ControlMode.PercentOutput, 1);
     }
+
+    public void stopClock(){
+        clockVictor.set(ControlMode.PercentOutput, 0);
+    }
 }
