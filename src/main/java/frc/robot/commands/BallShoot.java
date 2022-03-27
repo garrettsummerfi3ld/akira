@@ -11,6 +11,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.subsystems.BallClock;
@@ -23,6 +24,7 @@ public class BallShoot extends CommandBase {
 
     // Controllers
     private final Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
+    private final XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
 
     /**
      * Creates a constructor of the ball shooter commands
@@ -50,9 +52,9 @@ public class BallShoot extends CommandBase {
             m_ballClock.releaseBall();
         }
 
-        if (driverJoystick.getTop()) {
+        if (auxController.getLeftBumper()) {
             m_ballShooter.shootBall();
-        } else {
+        } else if (auxController.getRightBumper()) {
             m_ballShooter.stopShooter();
         }
 
