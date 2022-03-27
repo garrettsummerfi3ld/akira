@@ -62,9 +62,9 @@ public class BallClock extends SubsystemBase {
      */
     public void setBall() {
         if (checkBottomSensor() && !checkTopSensor()) {
-            clockVictor.set(ControlMode.PercentOutput, PowerConstants.clockingPowerLimit);
+            clockVictor.set(ControlMode.PercentOutput, PowerConstants.kClockingPowerLimit);
         } else if (!checkBottomSensor() && checkTopSensor()) {
-            clockVictor.set(ControlMode.PercentOutput, -PowerConstants.clockingPowerLimit);
+            clockVictor.set(ControlMode.PercentOutput, -PowerConstants.kClockingPowerLimit);
         } else {
             clockVictor.set(ControlMode.PercentOutput, 0);
         }

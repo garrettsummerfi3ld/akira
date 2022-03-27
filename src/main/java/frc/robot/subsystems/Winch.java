@@ -41,7 +41,7 @@ public class Winch extends SubsystemBase {
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */
     public void winchUp() {
-        winchVictor.set(ControlMode.PercentOutput, PowerConstants.winchPowerLimit);
+        winchVictor.set(ControlMode.PercentOutput, PowerConstants.kWinchPowerLimit);
     }
 
     /**
@@ -50,7 +50,7 @@ public class Winch extends SubsystemBase {
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */
     public void winchDown() {
-        winchVictor.set(ControlMode.PercentOutput, -PowerConstants.winchPowerLimit);
+        winchVictor.set(ControlMode.PercentOutput, -PowerConstants.kWinchPowerLimit);
     }
 
     /**

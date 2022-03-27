@@ -43,7 +43,7 @@ public class Tilt extends SubsystemBase {
      * This will be used in conjunction with the winch subsystem (Otis)
      */
     public void tiltUp() {
-        liftVictor.set(ControlMode.PercentOutput, PowerConstants.winchPowerLimit);
+        liftVictor.set(ControlMode.PercentOutput, PowerConstants.kTiltPowerLimit);
     }
 
     /**
@@ -52,7 +52,7 @@ public class Tilt extends SubsystemBase {
      * This will be used in conjunction with the winch subsystem (Otis)
      */
     public void tiltDown() {
-        liftVictor.set(ControlMode.PercentOutput, -PowerConstants.winchPowerLimit);
+        liftVictor.set(ControlMode.PercentOutput, -PowerConstants.kTiltPowerLimit);
     }
 
     public void tiltStop() {

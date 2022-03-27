@@ -41,7 +41,7 @@ public class BallIntake extends SubsystemBase {
      * This will be used in conjunction with the clocking mechanism
      */
     public void intakeBall() {
-        intakeVictor.set(ControlMode.PercentOutput, PowerConstants.intakePowerLimit);
+        intakeVictor.set(ControlMode.PercentOutput, PowerConstants.kIntakePowerLimit);
     }
 
     /**
@@ -50,7 +50,7 @@ public class BallIntake extends SubsystemBase {
      * This will be used in conjunction with the clocking mechanism
      */
     public void rejectBall() {
-        intakeVictor.set(ControlMode.PercentOutput, -PowerConstants.intakePowerLimit);
+        intakeVictor.set(ControlMode.PercentOutput, -PowerConstants.kIntakePowerLimit);
     }
 
     /**

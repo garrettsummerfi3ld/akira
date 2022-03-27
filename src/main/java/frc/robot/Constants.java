@@ -36,13 +36,15 @@ public class Constants {
     }
 
     // ==== SHOOTER MOTOR CONTROLLERS ====
-    // This is where you should put your motor controllers and have them associated
+    // This is where you should put your motor controllers and associated variables.
+    // Make sure that all the hardware such as the CAN IDs are correctly     associated
     // with the correct CAN ID on the bus for the SHOOTER, CLOCKING, and INTAKE
     // systems.
     public static final class ShooterMotorConstants {
         public static final int kShooterMotorCanID = 4;
         public static final int kIntakeMotorCanID = 7;
         public static final int kClockMotorCanID = 8;
+        public static final double kClockingRPM = 8000;
     }
 
     // ==== ELEVATOR MOTOR CONTROLLERS ====
@@ -60,12 +62,12 @@ public class Constants {
     // 1.0
     public static final class PowerConstants {
         public static final int kPowerDistribCanID = 11;
-        public static final double drivePowerLimit = 1.0;
-        public static final double shooterPowerLimit = 1.0;
-        public static final double winchPowerLimit = 0.75;
-        public static final double tiltPowerLimit = 0.3;
-        public static final double clockingPowerLimit = ;
-        public static final double intakePowerLimit = 1;
+        public static final double kDrivePowerLimit = 1.0;
+        public static final double kShooterPowerLimit = 1.0;
+        public static final double kWinchPowerLimit = 0.75;
+        public static final double kTiltPowerLimit = 0.3;
+        public static final double kClockingPowerLimit = 0.5;
+        public static final double kIntakePowerLimit = 1;
     }
 
     // ==== SENSOR ANALOG PORTS ====

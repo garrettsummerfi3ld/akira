@@ -59,7 +59,7 @@ public class Drivetrain extends SubsystemBase {
         drivetrain = new MecanumDrive(leftFrontSparkMAX, leftRearSparkMAX, rightFrontSparkMAX, rightRearSparkMAX);
         addChild("Drivetrain", drivetrain);
 
-        drivetrain.setMaxOutput(PowerConstants.drivePowerLimit);
+        drivetrain.setMaxOutput(PowerConstants.kDrivePowerLimit);
     }
 
     @Override
