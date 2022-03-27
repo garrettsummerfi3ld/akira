@@ -14,15 +14,15 @@ import frc.robot.Constants.ElevatorMotorConstants;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class Tilt extends SubsystemBase {
     // Hardware
-    private VictorSPX liftVictor;
+    private WPI_VictorSPX liftVictor;
     private BuiltInAccelerometer accel;
 
     public Tilt() {
-        liftVictor = new VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
+        liftVictor = new WPI_VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
         liftVictor.setInverted(false);
 
         accel = new BuiltInAccelerometer();
@@ -55,7 +55,7 @@ public class Tilt extends SubsystemBase {
     }
 
     public void tiltStop() {
-        liftVictor.set(ControlMode.PercentOutput, 0);
+        liftVictor.stop;
     }
 
     /**

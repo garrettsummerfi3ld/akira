@@ -15,16 +15,17 @@ import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AnalogInput;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class BallClock extends SubsystemBase {
     // Hardware
     private AnalogInput bottomSensor;
     private AnalogInput topSensor;
-    private VictorSPX clockVictor;
+    private WPI_VictorSPX clockVictor;
 
     public BallClock() {
-        clockVictor = new VictorSPX(ShooterMotorConstants.kClockMotorCanID);
+        clockVictor = new WPI_VictorSPX(ShooterMotorConstants.kClockMotorCanID);
+        addChild("Clocking VictorSPX", clockVictor);
 
         bottomSensor = new AnalogInput(ShooterSensorConstants.kSensorBottom);
         addChild("BottomSensor", bottomSensor);

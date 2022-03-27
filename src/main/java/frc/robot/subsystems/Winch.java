@@ -13,14 +13,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorMotorConstants;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class Winch extends SubsystemBase {
     // Hardware
-    private VictorSPX winchVictor;
+    private WPI_VictorSPX winchVictor;
 
     public Winch() {
-        winchVictor = new VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
+        winchVictor = new WPI_VictorSPX(ElevatorMotorConstants.kWinchMotorCanID);
         winchVictor.setInverted(false);
     }
 

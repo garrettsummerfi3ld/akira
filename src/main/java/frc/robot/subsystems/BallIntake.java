@@ -13,15 +13,16 @@ package frc.robot.subsystems;
 import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class BallIntake extends SubsystemBase {
     // Hardware
-    private VictorSPX intakeVictor;
+    private WPI_VictorSPX intakeVictor;
 
     public BallIntake() {
-        intakeVictor = new VictorSPX(ShooterMotorConstants.kIntakeMotorCanID);
+        intakeVictor = new WPI_VictorSPX(ShooterMotorConstants.kIntakeMotorCanID);
         intakeVictor.setInverted(false);
+        addChild("Intake VictorSPX", intakeVictor);
     }
 
     @Override
