@@ -12,19 +12,19 @@ package frc.robot.subsystems;
 
 import frc.robot.Constants.DriveMotorConstants;
 import frc.robot.Constants.PowerConstants;
+import frc.robot.util.CANSparkMaxSendable;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 public class Drivetrain extends SubsystemBase {
     // Hardware
-    private final CANSparkMax leftFrontSparkMAX;
-    private final CANSparkMax rightFrontSparkMAX;
-    private final CANSparkMax leftRearSparkMAX;
-    private final CANSparkMax rightRearSparkMAX;
+    private final CANSparkMaxSendable leftFrontSparkMAX;
+    private final CANSparkMaxSendable rightFrontSparkMAX;
+    private final CANSparkMaxSendable leftRearSparkMAX;
+    private final CANSparkMaxSendable rightRearSparkMAX;
     private final MecanumDrive drivetrain;
     private RelativeEncoder leftFrontEncoder;
     private RelativeEncoder rightFrontEncoder;
@@ -36,26 +36,29 @@ public class Drivetrain extends SubsystemBase {
      * to the drivetrain
      */
     public Drivetrain() {
-        leftFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
+        leftFrontSparkMAX = new CANSparkMaxSendable(DriveMotorConstants.kLeftFrontMotorCanID, MotorType.kBrushed);
         leftFrontSparkMAX.setInverted(false);
+        addChild("leftFrontSparkMAX", leftFrontSparkMAX);
         leftFrontEncoder = leftFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
-        rightFrontSparkMAX = new CANSparkMax(DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
-        rightFrontSparkMAX.setInverted(false);
+        rightFrontSparkMAX = new CANSparkMaxSendable(DriveMotorConstants.kRightFrontMotorCanID, MotorType.kBrushed);
+        rightFrontSparkMAX.setInverted(true);
+        addChild("rightFrontSparkMAX", rightFrontSparkMAX);
         rightFrontEncoder = rightFrontSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
-        leftRearSparkMAX = new CANSparkMax(DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
-        leftRearSparkMAX.setInverted(false);
+        leftRearSparkMAX = new CANSparkMaxSendable(DriveMotorConstants.kLeftRearMotorCanID, MotorType.kBrushed);
+        leftRearSparkMAX.setInverted(true);
+        addChild("leftRearSparkMAX", leftRearSparkMAX);
         leftRearEncoder = leftRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
-        rightRearSparkMAX = new CANSparkMax(DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
+        rightRearSparkMAX = new CANSparkMaxSendable(DriveMotorConstants.kRightRearMotorCanID, MotorType.kBrushed);
         rightRearSparkMAX.setInverted(false);
+        addChild("rightRearSparkMAX", rightRearSparkMAX);
         rightRearEncoder = rightRearSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
 
         drivetrain = new MecanumDrive(leftFrontSparkMAX, leftRearSparkMAX, rightFrontSparkMAX, rightRearSparkMAX);
         addChild("Drivetrain", drivetrain);
-        drivetrain.setSafetyEnabled(true);
-        drivetrain.setExpiration(0.1);
+
         drivetrain.setMaxOutput(PowerConstants.drivePowerLimit);
     }
 
