@@ -39,6 +39,7 @@ public class RobotContainer {
     private final BallClock m_ballClock = new BallClock();
     private final Drivetrain m_mechanumDrive = new Drivetrain();
     private final PowerPanel m_power = new PowerPanel();
+    private final CameraViews m_camera = new CameraViews();
 
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -51,6 +52,7 @@ public class RobotContainer {
         SmartDashboard.putBoolean("Clock Set", m_ballClock.getClockSet());
         SmartDashboard.putBoolean("Shooter", m_ballShooter.getShooterRunningMaxSpeed());
         SmartDashboard.putNumberArray("Power Distribution", m_power.getVitals());
+        SmartDashboard.putData("Camera", m_camera);
     }
 
     public static RobotContainer getInstance() {
