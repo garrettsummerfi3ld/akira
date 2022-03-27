@@ -55,7 +55,7 @@ public class Tilt extends SubsystemBase {
     }
 
     public void tiltStop() {
-        liftVictor.stop;
+        liftVictor.stopMotor();
     }
 
     /**

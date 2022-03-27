@@ -117,6 +117,6 @@ public class BallClock extends SubsystemBase {
      * Stops clocking motor
      */
     public void stopClock(){
-        clockVictor.set(ControlMode.PercentOutput, 0);
+        clockVictor.stopMotor();
     }
 }
