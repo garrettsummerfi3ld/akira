@@ -8,9 +8,9 @@ public class BallVelocity {
     /**
      * Checks if ball will actually land target from distance
      * 
-     * @param dist Distance to target
-     * @param vr
-     * @return margin of error
+     * @param dist double Distance to target
+     * @param vr   double Velocity
+     * @return double Margin of error
      */
     public static double deviance(double dist, double vr) {
         double angleInRadians = 1.22173;
@@ -25,16 +25,19 @@ public class BallVelocity {
 
         double x = -dist;
         double y = 0;
-        double vx = Math.cos(angleInRadians) * vr;
-        double vy = Math.sin(angleInRadians) * vr;
+        double velocityX = Math.cos(angleInRadians) * vr;
+        double velocityY = Math.sin(angleInRadians) * vr;
         double toggle = 0;
         double error = -1;
 
         while (y >= 0) {
-            x = x + step * vx;
-            y = y + step * vy;
-            vx = vx + step * (-dragForce * vx * Math.sqrt((Math.pow(vx, 2)) + (Math.pow(vy, 2))));
-            vy = vy + step * ((-gravity) - dragForce * vy * Math.sqrt((Math.pow(vx, 2)) + (Math.pow(vy, 2))));
+            x = x + step * velocityX;
+            y = y + step * velocityY;
+            velocityX = velocityX
+                    + step * (-dragForce * velocityX * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
+            velocityY = velocityY + step
+                    * ((-gravity)
+                            - dragForce * velocityY * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
 
             if (y <= hoopHeight && toggle == 1) {
                 toggle = toggle + 1;
