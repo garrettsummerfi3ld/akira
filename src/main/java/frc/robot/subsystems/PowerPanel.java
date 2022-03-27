@@ -14,7 +14,7 @@ public class PowerPanel extends SubsystemBase {
     PowerDistribution powDist;
 
     public PowerPanel() {
-        powDist = new PowerDistribution(PowerConstants.kPowerDisroCanID, ModuleType.kCTRE);
+        powDist = new PowerDistribution(PowerConstants.kPowerDistribCanID, ModuleType.kCTRE);
     }
 
     @Override

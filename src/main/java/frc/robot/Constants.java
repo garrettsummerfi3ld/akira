@@ -59,13 +59,13 @@ public class Constants {
     // the subsystem more than enough power. These will all have a range of -1.0 to
     // 1.0
     public static final class PowerConstants {
-        public static final int kPowerDisroCanID = 11;
+        public static final int kPowerDistribCanID = 11;
         public static final double drivePowerLimit = 1.0;
         public static final double shooterPowerLimit = 1.0;
-        public static final double winchPowerLimit = 1.0;
-        public static final double tiltPowerLimit = 1.0;
-        public static final double clockingPowerLimit = 0.5;
-        public static final double intakePowerLimit = 0.5;
+        public static final double winchPowerLimit = 0.75;
+        public static final double tiltPowerLimit = 0.3;
+        public static final double clockingPowerLimit = ;
+        public static final double intakePowerLimit = 1;
     }
 
     // ==== SENSOR ANALOG PORTS ====

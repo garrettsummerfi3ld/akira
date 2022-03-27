@@ -10,6 +10,7 @@
 
 package frc.robot.subsystems;
 
+import frc.robot.Constants.PowerConstants;
 import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -40,7 +41,7 @@ public class BallIntake extends SubsystemBase {
      * This will be used in conjunction with the clocking mechanism
      */
     public void intakeBall() {
-        intakeVictor.set(ControlMode.PercentOutput, 0.5);
+        intakeVictor.set(ControlMode.PercentOutput, PowerConstants.intakePowerLimit);
     }
 
     /**
@@ -49,7 +50,7 @@ public class BallIntake extends SubsystemBase {
      * This will be used in conjunction with the clocking mechanism
      */
     public void rejectBall() {
-        intakeVictor.set(ControlMode.PercentOutput, -0.5);
+        intakeVictor.set(ControlMode.PercentOutput, -PowerConstants.intakePowerLimit);
     }
 
     /**

@@ -12,6 +12,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ElevatorMotorConstants;
+import frc.robot.Constants.PowerConstants;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -40,7 +41,7 @@ public class Winch extends SubsystemBase {
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */
     public void winchUp() {
-        winchVictor.set(ControlMode.PercentOutput, 0.5);
+        winchVictor.set(ControlMode.PercentOutput, PowerConstants.winchPowerLimit);
     }
 
     /**
@@ -49,7 +50,7 @@ public class Winch extends SubsystemBase {
      * This will be used in conjunction with the tilting mechanism (Eileen)
      */
     public void winchDown() {
-        winchVictor.set(ControlMode.PercentOutput, -0.5);
+        winchVictor.set(ControlMode.PercentOutput, -PowerConstants.winchPowerLimit);
     }
 
     /**

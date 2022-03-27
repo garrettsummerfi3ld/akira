@@ -11,6 +11,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.ShooterSensorConstants;
+import frc.robot.Constants.PowerConstants;
 import frc.robot.Constants.ShooterMotorConstants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -61,9 +62,9 @@ public class BallClock extends SubsystemBase {
      */
     public void setBall() {
         if (checkBottomSensor() && !checkTopSensor()) {
-            clockVictor.set(ControlMode.PercentOutput, 0.2);
+            clockVictor.set(ControlMode.PercentOutput, PowerConstants.clockingPowerLimit);
         } else if (!checkBottomSensor() && checkTopSensor()) {
-            clockVictor.set(ControlMode.PercentOutput, -0.2);
+            clockVictor.set(ControlMode.PercentOutput, -PowerConstants.clockingPowerLimit);
         } else {
             clockVictor.set(ControlMode.PercentOutput, 0);
         }
@@ -103,7 +104,7 @@ public class BallClock extends SubsystemBase {
      * This will be used in conjunction with the intake mechanism
      */
     public void rejectBall() {
-        clockVictor.set(ControlMode.PercentOutput, -0.5);
+        clockVictor.set(ControlMode.PercentOutput, -1);
     }
 
     /**

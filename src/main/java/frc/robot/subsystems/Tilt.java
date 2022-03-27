@@ -11,6 +11,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.Constants.ElevatorMotorConstants;
+import frc.robot.Constants.PowerConstants;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -42,7 +43,7 @@ public class Tilt extends SubsystemBase {
      * This will be used in conjunction with the winch subsystem (Otis)
      */
     public void tiltUp() {
-        liftVictor.set(ControlMode.PercentOutput, 0.5);
+        liftVictor.set(ControlMode.PercentOutput, PowerConstants.winchPowerLimit);
     }
 
     /**
@@ -51,7 +52,7 @@ public class Tilt extends SubsystemBase {
      * This will be used in conjunction with the winch subsystem (Otis)
      */
     public void tiltDown() {
-        liftVictor.set(ControlMode.PercentOutput, -0.5);
+        liftVictor.set(ControlMode.PercentOutput, -PowerConstants.winchPowerLimit);
     }
 
     public void tiltStop() {
