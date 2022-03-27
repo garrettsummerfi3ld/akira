@@ -89,4 +89,12 @@ public class Constants {
         public static final int driverJoystickPort = 0;
         public static final int auxXboxController = 1;
     }
+
+    // ==== CAMERA PORTS ====
+    // This is where you should put your cameras as inputs for Shuffleboard. This
+    // is vital as the ports have to be in this order for things to work properly
+    public static final class CameraConstants {
+        public static final int driverCamera = 0;
+        public static final int elevatorCamera = 1;
+    }
 }
