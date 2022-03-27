@@ -46,13 +46,11 @@ public class RobotContainer {
 
         m_mechanumDrive.setDefaultCommand(new MechanumDrive(m_mechanumDrive));
 
-        SmartDashboard.putData("Drivetrain", m_mechanumDrive);
-        SmartDashboard.putData("Winch", m_winch);
-        SmartDashboard.putData("Tilt", m_tilt);
-        SmartDashboard.putData("Intake", m_ballIntake);
-        SmartDashboard.putData("Clock", m_ballClock);
-        SmartDashboard.putData("Shooter", m_ballShooter);
-        SmartDashboard.putData("Power Distribution", m_power);
+        // Basic SmartDashboard
+        SmartDashboard.putNumberArray("Drivetrain", m_mechanumDrive.getEncoderVelocity());
+        SmartDashboard.putBoolean("Clock Set", m_ballClock.getClockSet());
+        SmartDashboard.putBoolean("Shooter", m_ballShooter.getShooterRunningMaxSpeed());
+        SmartDashboard.putNumberArray("Power Distribution", m_power.getVitals());
     }
 
     public static RobotContainer getInstance() {

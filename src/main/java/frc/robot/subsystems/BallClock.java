@@ -24,6 +24,8 @@ public class BallClock extends SubsystemBase {
     private AnalogInput topSensor;
     private WPI_VictorSPX clockVictor;
 
+    private static boolean clockSet;
+
     public BallClock() {
         clockVictor = new WPI_VictorSPX(ShooterMotorConstants.kClockMotorCanID);
         addChild("Clocking VictorSPX", clockVictor);
@@ -119,5 +121,13 @@ public class BallClock extends SubsystemBase {
      */
     public void stopClock(){
         clockVictor.stopMotor();
+    }
+
+    public boolean getClockSet() {
+        return clockSet;
+    }
+
+    public void setClockSet(boolean clockStatus){
+        clockSet = clockStatus;
     }
 }

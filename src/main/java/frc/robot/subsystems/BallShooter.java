@@ -25,15 +25,22 @@ public class BallShooter extends SubsystemBase {
     private CANSparkMax shooterSparkMAX;
     private RelativeEncoder shooterEncoder;
 
+    private static boolean shooterSpeedCheck;
+
     public BallShooter() {
         shooterSparkMAX = new CANSparkMax(ShooterMotorConstants.kShooterMotorCanID, MotorType.kBrushed);
         shooterSparkMAX.setInverted(false);
-        shooterEncoder = shooterSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 2048);
+        shooterEncoder = shooterSparkMAX.getEncoder(SparkMaxRelativeEncoder.Type.kQuadrature, 8192);
     }
 
     @Override
     public void periodic() {
-
+        if (getEncoderVelocity() >= ShooterMotorConstants.kClockingRPM) {
+            setShooterRunningMaxSpeed(true);
+        }
+        else {
+            setShooterRunningMaxSpeed(false);
+        }
     }
 
     @Override
@@ -55,7 +62,7 @@ public class BallShooter extends SubsystemBase {
      * 
      * @return double of the encoder in units of RPM
      */
-    public double getEncoderVeolocity() {
+    public double getEncoderVelocity() {
         return shooterEncoder.getVelocity();
     }
 
@@ -71,5 +78,13 @@ public class BallShooter extends SubsystemBase {
      */
     public void stopShooter(){
         shooterSparkMAX.stopMotor();
+    }
+
+    public boolean getShooterRunningMaxSpeed() {
+        return shooterSpeedCheck;
+    }
+
+    public void setShooterRunningMaxSpeed(boolean speedCheck) {
+        shooterSpeedCheck = speedCheck;
     }
 }
