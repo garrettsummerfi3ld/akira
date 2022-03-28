@@ -31,20 +31,18 @@ public class BallVelocity {
         double error = -1;
 
         while (y >= 0) {
-            x = x + step * velocityX;
-            y = y + step * velocityY;
-            velocityX = velocityX
-                    + step * (-dragForce * velocityX * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
-            velocityY = velocityY + step
-                    * ((-gravity)
-                            - dragForce * velocityY * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
+            x += step * velocityX;
+            y += step * velocityY;
+            velocityX += step
+                    * (-dragForce * velocityX * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
+            velocityY += step * ((-gravity) - dragForce * velocityY * Math.sqrt((Math.pow(velocityX, 2)) + (Math.pow(velocityY, 2))));
 
             if (y <= hoopHeight && toggle == 1) {
-                toggle = toggle + 1;
+                toggle += 1;
                 error = x;
             }
             if (y >= hoopHeight && toggle == 0) {
-                toggle = toggle + 1;
+                toggle += 1;
             }
         }
 

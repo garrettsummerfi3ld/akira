@@ -85,7 +85,7 @@ public class BallShooter extends SubsystemBase {
         return shooterSpeedCheck;
     }
 
-    public void setShooterRunningMaxSpeed(boolean speedCheck) {
+    public static void setShooterRunningMaxSpeed(boolean speedCheck) {
         shooterSpeedCheck = speedCheck;
     }
 }

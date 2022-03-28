@@ -50,7 +50,6 @@ public class MechanumDrive extends CommandBase {
      * @return double[] all values in xInput, yInput, zRotate, and speedSlide
      */
     private double[] procInputs(double xInput, double yInput, double zRotate, double speedSlide) {
-        ;
         if (xInput < 0.3 && xInput > -0.3)
             xInput = 0;
 

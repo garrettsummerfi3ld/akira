@@ -127,7 +127,7 @@ public class BallClock extends SubsystemBase {
         return clockSet;
     }
 
-    public void setClockSet(boolean clockStatus){
+    public static void setClockSet(boolean clockStatus){
         clockSet = clockStatus;
     }
 }
