@@ -61,7 +61,7 @@ public class BallShoot extends CommandBase {
         } else if (auxController.getBButton()) {
             m_ballShooter.shootBall(1);
         } else {
-            m_ballShooter.shootBall(00);
+            m_ballShooter.shootBall(0);
         }
     }
 

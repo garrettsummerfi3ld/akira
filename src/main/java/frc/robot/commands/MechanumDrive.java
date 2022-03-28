@@ -51,10 +51,10 @@ public class MechanumDrive extends CommandBase {
      */
     private double[] procInputs(double xInput, double yInput, double zRotate, double speedSlide) {
         ;
-        if (xInput < 0.3 && xInput > 0.3)
+        if (xInput < 0.3 && xInput > -0.3)
             xInput = 0;
 
-        if (yInput < 0.3 && yInput > 0.3)
+        if (yInput < 0.3 && yInput > -0.3)
             yInput = 0;
 
         xInput *= -1;
