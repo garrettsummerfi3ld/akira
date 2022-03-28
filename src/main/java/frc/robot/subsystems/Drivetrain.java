@@ -81,8 +81,9 @@ public class Drivetrain extends SubsystemBase {
      * @param yInput      double Input from the y-axis on the joystick
      * @param zInput     double Input from the rotate on the joystick
      */
-    public void drive(double xInput, double yInput, double zInput) {
-        drivetrain.driveCartesian(-yInput, xInput, zInput);
+    public void drive(double xInput, double yInput, double zInput, double speedOutput) {
+        drivetrain.driveCartesian(yInput, xInput, zInput);
+        drivetrain.setMaxOutput(speedOutput);
     }
 
     /**

@@ -27,7 +27,9 @@ public class MechanumDrive extends CommandBase {
 
     @Override
     public void execute() {
-        m_mechDriveTrain.drive(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getZ());
+        double[] inputs = procInputs(driveJoystick.getX(), driveJoystick.getY(), driveJoystick.getZ(),
+                driveJoystick.getRawAxis(3));
+        m_mechDriveTrain.drive(inputs[0], inputs[1], inputs[2], inputs[3]);
     }
 
     @Override
@@ -37,5 +39,27 @@ public class MechanumDrive extends CommandBase {
     @Override
     public boolean isFinished() {
         return false;
+    }
+
+    /**
+     * Processes inputs from the controller to be used on the drivetrain
+     * @param xInput double X-axis input on the controller
+     * @param yInput double Y-axis input on the controller
+     * @param zRotate double Z-axis input on the controller
+     * @param speedSlide double throttle input on the controller
+     * @return double[] all values in xInput, yInput, zRotate, and speedSlide
+     */
+    private double[] procInputs(double xInput, double yInput, double zRotate, double speedSlide) {
+        ;
+        if (xInput < 0.3 && xInput > 0.3)
+            xInput = 0;
+
+        if (yInput < 0.3 && yInput > 0.3)
+            yInput = 0;
+
+        xInput *= -1;
+        zRotate *= 0.2;
+        speedSlide = ((speedSlide * -1) + 1) / 2;
+        return new double[] { xInput, yInput, zRotate, speedSlide };
     }
 }
