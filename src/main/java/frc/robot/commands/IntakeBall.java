@@ -4,7 +4,6 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.ControllerConstants;
@@ -15,7 +14,7 @@ public class IntakeBall extends CommandBase {
     private final BallIntake m_ballIntake;
 
     // Controllers
-    private final Joystick driverJoystick = new Joystick(ControllerConstants.driverJoystickPort);
+    private final XboxController auxController = new XboxController(ControllerConstants.auxXboxController);
 
     public IntakeBall(BallIntake subsystem) {
         m_ballIntake = subsystem;
@@ -30,12 +29,11 @@ public class IntakeBall extends CommandBase {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        if (driverJoystick.getRawButton(5)) {
+        if (auxController.getLeftTriggerAxis() >= 0.25) {
             m_ballIntake.intakeBall();
-        } else if (driverJoystick.getRawButton(6)) {
+        } else if (auxController.getRightTriggerAxis() >= 0.25) {
             m_ballIntake.rejectBall();
-        }
-        else {
+        } else {
             m_ballIntake.stopIntake();
         }
     }

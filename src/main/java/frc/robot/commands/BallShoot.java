@@ -52,24 +52,24 @@ public class BallShoot extends CommandBase {
             m_ballClock.releaseBall();
         }
 
-        if (auxController.getLeftBumper()) {
-            m_ballShooter.shootBall();
-        } else if (auxController.getRightBumper()) {
-            m_ballShooter.stopShooter();
-        }
-
-        if (driverJoystick.getRawButton(3)) {
-            m_ballClock.acceptBall();
-        } else if (driverJoystick.getRawButton(4)) {
-            m_ballClock.rejectBall();
+        if (auxController.getAButton()) {
+            m_ballShooter.shootBall(0.25);
+        } else if (auxController.getXButton()) {
+            m_ballShooter.shootBall(0.5);
+        } else if (auxController.getYButton()) {
+            m_ballShooter.shootBall(0.75);
+        } else if (auxController.getBButton()) {
+            m_ballShooter.shootBall(1);
         } else {
-            m_ballClock.stopClock();
+            m_ballShooter.shootBall(00);
         }
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
+        m_ballShooter.stopShooter();
+        m_ballClock.stopClock();
     }
 
     // Returns true when the command should end.
