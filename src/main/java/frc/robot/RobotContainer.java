@@ -45,12 +45,17 @@ public class RobotContainer {
     private RobotContainer() {
 
         m_mechanumDrive.setDefaultCommand(new MechanumDrive(m_mechanumDrive));
+        m_ballShooter.setDefaultCommand(new BallShoot(m_ballShooter, m_ballClock));
+        m_ballClock.setDefaultCommand(new BallShoot(m_ballShooter, m_ballClock));
+        m_ballIntake.setDefaultCommand(new IntakeBall(m_ballIntake));
+        m_winch.setDefaultCommand(new LiftRobot(m_winch));
+        m_tilt.setDefaultCommand(new TiltRobot(m_tilt));
 
         // Basic SmartDashboard
-        SmartDashboard.putNumberArray("Drivetrain", m_mechanumDrive.getEncoderVelocity());
         SmartDashboard.putBoolean("Clock Set", m_ballClock.getClockSet());
         SmartDashboard.putBoolean("Shooter", m_ballShooter.getShooterRunningMaxSpeed());
         SmartDashboard.putNumberArray("Power Distribution", m_power.getVitals());
+        SmartDashboard.putData(m_mechanumDrive);
     }
 
     public static RobotContainer getInstance() {
