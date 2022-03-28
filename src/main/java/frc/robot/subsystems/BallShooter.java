@@ -67,10 +67,12 @@ public class BallShooter extends SubsystemBase {
     }
 
     /**
-     * Shoots ball at full speed
+     * Shoots ball at specified speed
+     * 
+     * @return double Speed value
      */
-    public void shootBall() {
-        shooterSparkMAX.set(1);
+    public void shootBall(double speed) {
+        shooterSparkMAX.set(speed);
     }
 
     /**
